@@ -6,14 +6,14 @@ public class Laboratoire {
     int idStock;
 
     public Laboratoire(int idLabo, String Ville,int idStock){
-        super();
+
         this.idLabo= idLabo;
         this.Ville= Ville;
         this.idStock = idStock;
     }
 
     public Laboratoire() {
-        super();
+
     }
 
     public String getVille() {

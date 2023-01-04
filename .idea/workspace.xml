@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52059758-59e3-4eef-8e55-c21d00941cda" name="Changes" comment="DAO fournisseur">
-      <change afterPath="$PROJECT_DIR$/src/DAO/DAOProduit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/Produit.java" afterDir="false" />
+    <list default="true" id="52059758-59e3-4eef-8e55-c21d00941cda" name="Changes" comment="DAO et entite produit">
+      <change afterPath="$PROJECT_DIR$/src/entity/Stock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commandeLabo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/commandeLabo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAO/DAOProduit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/DAOProduit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAO/DAOStock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/DAOStock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entity/Laboratoire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entity/Laboratoire.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672824387630</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="DAO et entite produit">
+      <created>1672836676733</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1672836676733</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -130,6 +138,7 @@
     <MESSAGE value="Singleton et debut DAO" />
     <MESSAGE value="Singleton DAO find findall" />
     <MESSAGE value="DAO fournisseur" />
-    <option name="LAST_COMMIT_MESSAGE" value="DAO fournisseur" />
+    <MESSAGE value="DAO et entite produit" />
+    <option name="LAST_COMMIT_MESSAGE" value="DAO et entite produit" />
   </component>
 </project>

@@ -55,4 +55,10 @@ public class DAOProduit {
         }
         return produits;
     }
+
+    public List<Produit>findAll() throws SQLException{
+        return findAll(0,4000);
+    }
+
+
 }
