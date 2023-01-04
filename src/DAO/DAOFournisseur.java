@@ -1,7 +1,6 @@
 package DAO;
 
 import entity.Fournisseur;
-import entity.Laboratoire;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

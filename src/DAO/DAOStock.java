@@ -1,7 +1,5 @@
 package DAO;
 
-import entity.Laboratoire;
-import entity.Produit;
 import entity.Stock;
 
 import java.sql.Connection;
