@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52059758-59e3-4eef-8e55-c21d00941cda" name="Changes" comment="Singleton et debut DAO" />
+    <list default="true" id="52059758-59e3-4eef-8e55-c21d00941cda" name="Changes" comment="Singleton DAO find findall">
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commandeLabo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/commandeLabo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAO/DAOLaboratoire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/DAOLaboratoire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Singleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Singleton.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +26,19 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="2ad71a0c-c0fb-4789-b2a8-b3c6b2b0e5c6" />
+        <option name="url" value="https://github.com/L1nk222/commandeLabo.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -35,7 +55,12 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
-    "create.test.in.the.same.root": "true"
+    "create.test.in.the.same.root": "true",
+    "last_opened_file_path": "C:/Users/Antoine/IdeaProjects/mariadb-java-client-3.1.0.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -54,7 +79,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672756184182</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Singleton et debut DAO">
+      <created>1672756241882</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1672756241882</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -70,6 +102,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Singleton et debut DAO" />
-    <option name="LAST_COMMIT_MESSAGE" value="Singleton et debut DAO" />
+    <MESSAGE value="Singleton DAO find findall" />
+    <option name="LAST_COMMIT_MESSAGE" value="Singleton DAO find findall" />
   </component>
 </project>
