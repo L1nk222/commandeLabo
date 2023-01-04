@@ -38,7 +38,7 @@ public class DAOProduit {
 
     public List<Produit> findAll(int limit, int offset) throws SQLException {
         List<Produit> produits = new ArrayList<>();
-        String SQL = "SELECT * FROM produit ";
+        String SQL = "SELECT * FROM produit limit ? offset ? ";
         PreparedStatement ps = cnx.prepareStatement(SQL);
         ps.setInt(1, offset);
         ps.setInt(2, limit);
