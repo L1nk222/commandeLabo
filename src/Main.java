@@ -45,7 +45,7 @@ public class Main {
         try {
             java.sql.Connection cnx = Singleton.getInstance().cnx;
             DAOProduit DAO = new DAOProduit(cnx);
-            List<Produit> produits = DAO.findAll();
+            List<Produit> produits = DAO.findAll(0,10);
             for (Produit prod : produits){
                 System.out.println(prod.getMatricule());
             }
