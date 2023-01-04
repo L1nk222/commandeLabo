@@ -1,0 +1,169 @@
+Index: src/fenetreMain.form
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/fenetreMain.form b/src/fenetreMain.form
+new file mode 100644
+--- /dev/null	(date 1672752365781)
++++ b/src/fenetreMain.form	(date 1672752365781)
+@@ -0,0 +1,67 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="fenetreMain">
++  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
++    <margin top="0" left="0" bottom="0" right="0"/>
++    <constraints>
++      <xy x="20" y="20" width="500" height="400"/>
++    </constraints>
++    <properties>
++      <background color="-1119253"/>
++    </properties>
++    <border type="none"/>
++    <children>
++      <grid id="7e5e2" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
++        <margin top="0" left="0" bottom="0" right="0"/>
++        <constraints>
++          <grid row="0" column="1" row-span="3" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
++        </constraints>
++        <properties/>
++        <border type="none"/>
++        <children>
++          <component id="324f5" class="javax.swing.JButton" binding="commandeButton">
++            <constraints>
++              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
++            </constraints>
++            <properties>
++              <text value="Commande"/>
++            </properties>
++          </component>
++          <vspacer id="c6d1c">
++            <constraints>
++              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
++            </constraints>
++          </vspacer>
++          <component id="6613a" class="javax.swing.JButton" binding="historiqueButton">
++            <constraints>
++              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
++            </constraints>
++            <properties>
++              <text value="historique"/>
++            </properties>
++          </component>
++        </children>
++      </grid>
++      <hspacer id="66114">
++        <constraints>
++          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
++        </constraints>
++      </hspacer>
++      <component id="b94b3" class="javax.swing.JButton" binding="stockButton">
++        <constraints>
++          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
++        </constraints>
++        <properties>
++          <text value="Stock"/>
++        </properties>
++      </component>
++      <component id="56bf7" class="javax.swing.JComboBox" binding="LaboBox">
++        <constraints>
++          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
++        </constraints>
++        <properties>
++          <model/>
++        </properties>
++      </component>
++    </children>
++  </grid>
++</form>
+Index: src/fenetreMain.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/fenetreMain.java b/src/fenetreMain.java
+new file mode 100644
+--- /dev/null	(date 1672752809114)
++++ b/src/fenetreMain.java	(date 1672752809114)
+@@ -0,0 +1,9 @@
++import javax.swing.*;
++
++public class fenetreMain {
++    private JButton stockButton;
++
++    private JButton commandeButton;
++    private JButton historiqueButton;
++    private JComboBox LaboBox;
++}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"52059758-59e3-4eef-8e55-c21d00941cda\" name=\"Changes\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2JdE7PfQNlnwpt2ulUWgqFKD317\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"52059758-59e3-4eef-8e55-c21d00941cda\" name=\"Changes\" comment=\"\" />\r\n      <created>1672399395123</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1672399395123</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision f68b8443a1697bd922cfa21eaeb96791b160bbf1)
++++ b/.idea/workspace.xml	(date 1672753220972)
+@@ -1,15 +1,48 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="AutoImportSettings">
++    <option name="autoReloadType" value="SELECTIVE" />
++  </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="52059758-59e3-4eef-8e55-c21d00941cda" name="Changes" comment="" />
++    <list default="true" id="52059758-59e3-4eef-8e55-c21d00941cda" name="Changes" comment="">
++      <change afterPath="$PROJECT_DIR$/src/fenetreMain.form" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/fenetreMain.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+   </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++      </list>
++    </option>
++  </component>
+   <component name="Git.Settings">
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
++  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
++  "lastFilter": {
++    "state": "OPEN"
++  }
++}]]></component>
++  <component name="GithubPullRequestsUISettings">
++    <option name="selectedUrlAndAccountId">
++      <UrlAndAccount>
++        <option name="accountId" value="180b6f3e-9661-4708-8782-a588458a2078" />
++        <option name="url" value="https://github.com/L1nk222/commandeLabo.git" />
++      </UrlAndAccount>
++    </option>
++  </component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
++  </component>
++  <component name="ProblemsViewState">
++    <option name="selectedTabId" value="CurrentFile" />
++  </component>
+   <component name="ProjectId" id="2JdE7PfQNlnwpt2ulUWgqFKD317" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+   <component name="ProjectViewState">
+@@ -19,7 +52,11 @@
+   <component name="PropertiesComponent"><![CDATA[{
+   "keyToString": {
+     "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true"
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
++    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
++    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "259",
++    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors"
+   }
+ }]]></component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
