@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52059758-59e3-4eef-8e55-c21d00941cda" name="Changes" comment="Singleton DAO find findall">
-      <change afterPath="$PROJECT_DIR$/src/DAO/DAOFournisseur.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/entity/Fournisseur.java" afterDir="false" />
+    <list default="true" id="52059758-59e3-4eef-8e55-c21d00941cda" name="Changes" comment="DAO fournisseur">
+      <change afterPath="$PROJECT_DIR$/src/DAO/DAOProduit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/entity/Produit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAO/DAOStock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/DAOStock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commandeLabo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/commandeLabo.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,13 +54,27 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
     "create.test.in.the.same.root": "true",
-    "last_opened_file_path": "C:/Users/Antoine/IdeaProjects/mariadb-java-client-3.1.0.jar",
+    "last_opened_file_path": "C:/Users/Antoine/Downloads/mariadb-java-client-3.1.0.jar",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="commandeLabo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -92,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672823090881</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="DAO fournisseur">
+      <created>1672824387630</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1672824387630</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,6 +129,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Singleton et debut DAO" />
     <MESSAGE value="Singleton DAO find findall" />
-    <option name="LAST_COMMIT_MESSAGE" value="Singleton DAO find findall" />
+    <MESSAGE value="DAO fournisseur" />
+    <option name="LAST_COMMIT_MESSAGE" value="DAO fournisseur" />
   </component>
 </project>
