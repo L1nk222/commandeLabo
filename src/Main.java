@@ -7,7 +7,7 @@ import java.util.List;
 public class Main {
 
 
-    public static void TestFind(){
+    public static void TestFindLabo(){
         try  {
             java.sql.Connection cnx = Singleton.getInstance().cnx;
             DAOLaboratoire DAO = new DAOLaboratoire(cnx);
@@ -20,7 +20,7 @@ public class Main {
         }
 
     }
-    public static void TestFindAll(){
+    public static void TestFindAllLabo(){
         try {
             java.sql.Connection cnx = Singleton.getInstance().cnx;
             DAOLaboratoire DAO = new DAOLaboratoire(cnx);
@@ -42,7 +42,7 @@ public class Main {
 
     public static void main(String[] args)    {
         System.out.println("Hello world!");
-        TestFind();
-        TestFindAll();
+        TestFindLabo();
+        TestFindAllLabo();
         }
 }
