@@ -1,14 +1,17 @@
 package entity;
 
-public class ligneComande {
+public class LigneCommande {
     int idCommande;
     String matriculProd;
     int quantiteProd;
 
-    public ligneComande(int idCommande, String matriculProd, int quantiteProd) {
+    public LigneCommande(int idCommande, String matriculProd, int quantiteProd) {
         this.idCommande = idCommande;
         this.matriculProd = matriculProd;
         this.quantiteProd = quantiteProd;
+    }
+
+    public LigneCommande() {
     }
 
     @Override
