@@ -5,13 +5,16 @@ public class Commande {
     String dateCommande;
     String descriptionCommande;
     int idComande;
+    int idLabo;
 
 
-    public Commande(int idRecap, String DateCommande, String DescriptionCommande, int idComande) {
+
+    public Commande(int idRecap, String DateCommande, String DescriptionCommande, int idComande,int idLabo) {
         this.idRecap = idRecap;
         this.dateCommande = DateCommande;
         this.descriptionCommande = DescriptionCommande;
         this.idComande = idComande;
+        this.idLabo = idLabo;
     }
 
     public Commande() {
@@ -24,7 +27,8 @@ public class Commande {
                 "idRecap=" + idRecap +
                 ", DateCommande='" + dateCommande + '\'' +
                 ", DescriptionCommande='" + descriptionCommande + '\'' +
-                ", idComande=" + idComande +
+                ", idComande=" + idComande + '\''+
+                ", idLabo=" + idLabo +
                 '}';
     }
 
@@ -59,4 +63,7 @@ public class Commande {
     public void setIdComande(int idComande) {
         this.idComande = idComande;
     }
+    public int getIdLabo() { return idLabo; }
+
+    public void setIdLabo(int idLabo) {this.idLabo = idLabo;}
 }

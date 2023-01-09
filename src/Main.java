@@ -1,5 +1,7 @@
+import DAO.DAOCommande;
 import DAO.DAOLaboratoire;
 import DAO.DAOProduit;
+import entity.Commande;
 import controller.ControllerLabo;
 import entity.Laboratoire;
 import entity.Produit;
@@ -49,11 +51,33 @@ public class Main {
         try {
             java.sql.Connection cnx = Singleton.getInstance().cnx;
             DAOProduit DAO = new DAOProduit(cnx);
-            List<Produit> produits = DAO.findAll(0,10);
+            List<Produit> produits = DAO.findAll(0,100);
             for (Produit prod : produits){
                 System.out.println(prod.getMatricule());
             }
-
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public static void TestFindAllCommande(){
+        try {
+            java.sql.Connection cnx = Singleton.getInstance().cnx;
+            DAOCommande DAO = new DAOCommande(cnx);
+            List<Commande> produits = DAO.findAll(0,100);
+            for (Commande prod : produits){
+                System.out.println(prod.getIdRecap());
+            }
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    public static void TestSaveCommande(){
+        try {
+            java.sql.Connection cnx = Singleton.getInstance().cnx;
+            DAOCommande DAO = new DAOCommande(cnx);
+            DAO.save(new Commande(37,"20/01/2023","joli",3,7));
 
         }
         catch (SQLException e){
@@ -68,6 +92,8 @@ public class Main {
         //TestFindLabo();
         //TestFindAllLabo();
         //TestFindAllProduit();
+        //TestSaveCommande();
+        //TestFindAllCommande();
         DAOLaboratoire dao;
         try{
         dao = new DAOLaboratoire(Singleton.getInstance().cnx);
@@ -78,5 +104,5 @@ public class Main {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-    }}
+    }
+}
