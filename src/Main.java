@@ -1,8 +1,12 @@
 import DAO.DAOLaboratoire;
 import DAO.DAOProduit;
+import controller.ControllerLabo;
 import entity.Laboratoire;
 import entity.Produit;
 import utils.Singleton;
+import views.FenetreCommande;
+import views.FenetreLab;
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
@@ -63,6 +67,16 @@ public class Main {
         System.out.println("Hello world!");
         //TestFindLabo();
         //TestFindAllLabo();
-        TestFindAllProduit();
+        //TestFindAllProduit();
+        DAOLaboratoire dao;
+        try{
+        dao = new DAOLaboratoire(Singleton.getInstance().cnx);
+        FenetreLab f=new FenetreLab();
+        FenetreCommande f2 = new FenetreCommande();
+        new ControllerLabo(f,dao,f2).init();
+        }catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
-}
+
+    }}
