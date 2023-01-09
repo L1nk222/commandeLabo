@@ -7,13 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import entity.Commande;
 import entity.LigneComande;
 
-public class DAOListeCommande {
+public class DAOLigneCommande {
     private Connection cnx;
 
-    public DAOListeCommande(Connection cnx) {this.cnx = cnx;}
+    public DAOLigneCommande(Connection cnx) {this.cnx = cnx;}
 
     public LigneComande findById(int idCommande) throws SQLException {
         LigneComande commande = null;
