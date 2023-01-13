@@ -9,7 +9,7 @@ public class FenetreCommande extends JFrame {
 
     public FenetreCommande() {
         setContentPane(panelTest);
-        setExtendedState(FenetreLab.MAXIMIZED_BOTH);
+        setExtendedState(FenetreLab.MAXIMIZED_BOTH);//Plein écran
 
 
     }

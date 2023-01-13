@@ -28,7 +28,6 @@ public class ControllerLabo {
             public void actionPerformed(ActionEvent e) {
                 doTest();
 
-
             }
         });
 

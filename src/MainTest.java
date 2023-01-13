@@ -1,10 +1,11 @@
 import DAO.DAOCommande;
+import controller.ControllerTest;
 import entity.Commande;
 import utils.Singleton;
 
 import java.sql.SQLException;
 import java.util.List;
-
+import views.FenetreTest;
 public class MainTest {
     public static void TestFindAllCommande(){
         try {
@@ -19,10 +20,18 @@ public class MainTest {
             e.printStackTrace();
         }
     }
+    private static void AfficheTestFenetre(){
+        FenetreTest f = new FenetreTest();
+        f.setVisible(true);
+        new ControllerTest(f);
+        System.out.println("ça marche");
+    }
 
     public static void main(String[] args){
 
         TestFindAllCommande();
+        AfficheTestFenetre();
+
     }
 }
 
