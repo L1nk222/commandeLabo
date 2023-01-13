@@ -1,12 +1,15 @@
 import DAO.DAOCommande;
+import DAO.DAOConnexion;
 import DAO.DAOLaboratoire;
 import DAO.DAOProduit;
+import controller.ControllerConnexion;
 import entity.Commande;
 import controller.ControllerLabo;
 import entity.Laboratoire;
 import entity.Produit;
 import utils.Singleton;
 import views.FenetreCommande;
+import views.FenetreConnexion;
 import views.FenetreLab;
 
 import java.sql.DriverManager;
@@ -94,12 +97,15 @@ public class Main {
         //TestFindAllProduit();
         //TestSaveCommande();
         //TestFindAllCommande();
-        DAOLaboratoire dao;
+        DAOLaboratoire daol;
+        DAOConnexion daoc;
         try{
-        dao = new DAOLaboratoire(Singleton.getInstance().cnx);
-        FenetreLab f=new FenetreLab();
+        daoc = new DAOConnexion(Singleton.getInstance().cnx);
+        daol = new DAOLaboratoire(Singleton.getInstance().cnx);
+
+        FenetreConnexion f=new FenetreConnexion();
         FenetreCommande f2 = new FenetreCommande();
-        new ControllerLabo(f,dao,f2).init();
+        new ControllerConnexion(f,daoc,daol,f2).init();
         }catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
