@@ -5,14 +5,15 @@ public class Stock {
     String matricule;
     int quantiteProd;
 
-    public Stock() {
-    }
 
     public Stock(int idStock, String matricule, int quantiteProd) {
         this.idStock = idStock;
         this.matricule = matricule;
         this.quantiteProd = quantiteProd;
     }
+    public Stock() {
+    }
+
 
     @Override
     public String toString() {
