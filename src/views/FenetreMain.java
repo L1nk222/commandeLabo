@@ -14,4 +14,8 @@ public class FenetreMain {
     private JTable tableStock;
     private JTextField rechercheHistorique;
     private JTable tableHistorique;
+    private JTextField textField1;
+    private JTable table1;
+    private JTextArea textArea1;
+    private JButton commanderButton;
 }
