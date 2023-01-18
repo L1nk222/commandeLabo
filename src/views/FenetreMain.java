@@ -59,6 +59,38 @@ public class FenetreMain extends JFrame{
         Stock = stock;
     }
 
+    public JTextField getTextField1() {
+        return textField1;
+    }
+
+    public void setTextField1(JTextField textField1) {
+        this.textField1 = textField1;
+    }
+
+    public JTable getTable1() {
+        return table1;
+    }
+
+    public void setTable1(JTable table1) {
+        this.table1 = table1;
+    }
+
+    public JTextArea getTextArea1() {
+        return textArea1;
+    }
+
+    public void setTextArea1(JTextArea textArea1) {
+        this.textArea1 = textArea1;
+    }
+
+    public JButton getCommanderButton() {
+        return commanderButton;
+    }
+
+    public void setCommanderButton(JButton commanderButton) {
+        this.commanderButton = commanderButton;
+    }
+
     public JPanel getHistorique() {
         return Historique;
     }
