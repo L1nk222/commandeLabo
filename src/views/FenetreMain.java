@@ -2,7 +2,7 @@ package views;
 
 import javax.swing.*;
 
-public class FenetreMain {
+public class FenetreMain extends JFrame{
     private JTabbedPane tabbedPane1;
     private JPanel panel1;
     private JTextField rechercheHome;
