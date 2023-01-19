@@ -26,6 +26,10 @@ public class DAOLaboratoire {
             labo.setIdLabo(rs.getInt("idLabo"));
             labo.setVille(rs.getString("ville"));
             labo.setIdStock(rs.getInt("idStock"));
+            labo.setNumTelephone(rs.getString("numTelephone"));
+            labo.setNom(rs.getString("nom"));
+            labo.setAdresse(rs.getString("adresse"));
+            labo.setEmail(rs.getString("email"));
         }
         return labo;
 
@@ -43,6 +47,10 @@ public class DAOLaboratoire {
                 labo.setIdLabo(rs.getInt("idLabo"));
                 labo.setVille(rs.getString("ville"));
                 labo.setIdStock(rs.getInt("idStock"));
+                labo.setNumTelephone(rs.getString("numTelephone"));
+                labo.setNom(rs.getString("nom"));
+                labo.setAdresse(rs.getString("adresse"));
+                labo.setEmail(rs.getString("email"));
                 labos.add(labo);
 
             }
@@ -53,6 +61,25 @@ public class DAOLaboratoire {
 
         public List<Laboratoire>findAll() throws SQLException{
             return findAll(0,4000);
+        }
+
+        public Laboratoire findByLogin(String nom)throws SQLException{
+            Laboratoire labo =null;
+            String SQL= "SELECT * FROM laboratoire where nom=?";
+            PreparedStatement ps = cnx.prepareStatement(SQL);
+            ps.setString(1, nom);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                labo = new Laboratoire();
+                labo.setIdLabo(rs.getInt("idLabo"));
+                labo.setVille(rs.getString("ville"));
+                labo.setIdStock(rs.getInt("idStock"));
+                labo.setNumTelephone(rs.getString("numTelephone"));
+                labo.setNom(rs.getString("nom"));
+                labo.setAdresse(rs.getString("adresse"));
+                labo.setEmail(rs.getString("email"));
+            }
+            return labo;
         }
 
 

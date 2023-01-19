@@ -4,6 +4,15 @@ import javax.swing.*;
 
 public class FenetreMain extends JFrame{
     private JTabbedPane tabbedPane1;
+
+    public JLabel getNomLabo() {
+        return nomLabo;
+    }
+
+    public void setNomLabo(JLabel nomLabo) {
+        this.nomLabo = nomLabo;
+    }
+
     private JPanel panel1;
     private JTextField rechercheHome;
     private JPanel Home;
@@ -18,6 +27,13 @@ public class FenetreMain extends JFrame{
     private JTable table1;
     private JTextArea textArea1;
     private JButton commanderButton;
+    private JLabel nomLabo;
+    private JLabel villeLaboLabel;
+    private JLabel numPhoneLabel;
+    private JLabel idLaboLabel;
+    private JLabel adresseLabel;
+    private JLabel emailLabel;
+    private JLabel idStockLabel;
 
     public JTabbedPane getTabbedPane1() {
         return tabbedPane1;
@@ -139,8 +155,56 @@ public class FenetreMain extends JFrame{
         this.tableHistorique = tableHistorique;
     }
 
+    public JLabel getVilleLaboLabel() {
+        return villeLaboLabel;
+    }
+
+    public void setVilleLaboLabel(JLabel villeLaboLabel) {
+        this.villeLaboLabel = villeLaboLabel;
+    }
+
+    public JLabel getNumPhoneLabel() {
+        return numPhoneLabel;
+    }
+
+    public void setNumPhoneLabel(JLabel numPhoneLabel) {
+        this.numPhoneLabel = numPhoneLabel;
+    }
+
+    public JLabel getIdLaboLabel() {
+        return idLaboLabel;
+    }
+
+    public void setIdLaboLabel(JLabel idLaboLabel) {
+        this.idLaboLabel = idLaboLabel;
+    }
+
+    public JLabel getAdresseLabel() {
+        return adresseLabel;
+    }
+
+    public void setAdresseLabel(JLabel adresseLabel) {
+        this.adresseLabel = adresseLabel;
+    }
+
+    public JLabel getEmailLabel() {
+        return emailLabel;
+    }
+
+    public void setEmailLabel(JLabel emailLabel) {
+        this.emailLabel = emailLabel;
+    }
+
+    public JLabel getIdStockLabel() {
+        return idStockLabel;
+    }
+
+    public void setIdStockLabel(JLabel idStockLabel) {
+        this.idStockLabel = idStockLabel;
+    }
+
     public  FenetreMain(){
-        tabbedPane1.setSelectedComponent(Stock);
+        tabbedPane1.setSelectedComponent(Home);
         setContentPane(tabbedPane1);
         setExtendedState(FenetreLab.MAXIMIZED_BOTH);
 

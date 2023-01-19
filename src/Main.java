@@ -3,6 +3,7 @@ import DAO.DAOConnexion;
 import DAO.DAOLaboratoire;
 import DAO.DAOProduit;
 import controller.ControllerConnexion;
+import controller.ControllerHome;
 import entity.Commande;
 import controller.ControllerLabo;
 import entity.Laboratoire;
@@ -11,6 +12,7 @@ import utils.Singleton;
 import views.FenetreCommande;
 import views.FenetreConnexion;
 import views.FenetreLab;
+import views.FenetreMain;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -104,7 +106,7 @@ public class Main {
         daol = new DAOLaboratoire(Singleton.getInstance().cnx);
 
         FenetreConnexion f=new FenetreConnexion();
-        FenetreCommande f2 = new FenetreCommande();
+        FenetreMain f2 = new FenetreMain();
         new ControllerConnexion(f,daoc,daol,f2).init();
         }catch (SQLException e) {
             // TODO Auto-generated catch block

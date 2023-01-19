@@ -9,17 +9,17 @@ public class ControllerStock {
 
     DAOStock daoStock;
     JPanel panelStock;
-    FenetreMain fenetre1;
+    FenetreMain fenetre;
 
-    public ControllerStock(DAOStock daoStock, JPanel panelStock, FenetreMain fenetre1){
+
+    public ControllerStock(DAOStock daoStock, JPanel panelStock, FenetreMain fenetre){
         this.daoStock = daoStock;
         this.panelStock = panelStock;
-        this.fenetre1 = fenetre1;
+        this.fenetre = fenetre;
+
 
 
     }
-    public void init(){
-        fenetre1.setVisible(true);
-    }
+
 }
 
