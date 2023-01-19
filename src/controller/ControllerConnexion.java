@@ -3,9 +3,13 @@ package controller;
 import DAO.DAOConnexion;
 import DAO.DAOLaboratoire;
 import entity.Laboratoire;
-import views.FenetreCommande;
+import utils.Singleton;
+import views.FenetreMain;
 import views.FenetreConnexion;
+
 import entity.User;
+
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigInteger;
@@ -21,13 +25,14 @@ public class ControllerConnexion {
     DAOConnexion daoc;
     DAOLaboratoire daol;
 
-    FenetreCommande fenetreCommande;
 
-    public ControllerConnexion(FenetreConnexion fenetreCnx, DAOConnexion daoc, DAOLaboratoire daol, FenetreCommande fenetreCommande) {
+    FenetreMain fenetreMain;
+
+    public ControllerConnexion(FenetreConnexion fenetreCnx, DAOConnexion daoc, DAOLaboratoire daol, FenetreMain fenetreMain) {
         this.fenetreCnx = fenetreCnx;
         this.daoc = daoc;
         this.daol = daol;
-        this.fenetreCommande = fenetreCommande;
+        this.fenetreMain = fenetreMain;
 
 
         fenetreCnx.getValiderButton().addActionListener(new ActionListener() {
@@ -68,15 +73,21 @@ public class ControllerConnexion {
         try {
             String username=fenetreCnx.getTextField1().getText();
             String password= fenetreCnx.getPasswordField1().getText();
+
             if (daoc.findByLogin(username)!=null){
             User user=daoc.findByLogin(username);
             //System.out.println(password);
             password = toHexString(getSHA(password));
 
+
             if(user.getPassword().equals(password)){
                 //System.out.println("c passe");
                 fenetreCnx.setVisible(false);
-                fenetreCommande.setVisible(true);
+                daol = new DAOLaboratoire(Singleton.getInstance().cnx);
+                FenetreConnexion f=new FenetreConnexion();
+                FenetreMain f2 = new FenetreMain();
+                new ControllerHome(daol,f2,f,daol.findByLogin(""+fenetreCnx.getComboLabo().getSelectedItem())).init();
+                //fenetreMain.setVisible(true);
             }
             //System.out.println(password);
             //System.out.println(user.getPassword());
@@ -102,7 +113,7 @@ public class ControllerConnexion {
             List<Laboratoire> Labos = daol.findAll();
 
             for (Laboratoire labo : Labos) {
-                fenetreCnx.getComboLabo().addItem(labo.getVille());
+                fenetreCnx.getComboLabo().addItem(labo.getNom());
             }
 
 
