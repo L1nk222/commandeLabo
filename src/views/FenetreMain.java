@@ -34,7 +34,30 @@ public class FenetreMain extends JFrame{
     private JLabel adresseLabel;
     private JLabel emailLabel;
     private JLabel idStockLabel;
+    private JScrollPane scrollPaneHistorique;
 
+    /////////////////////////////////////////////////////////////////////////////
+    public static void main(String[] args){
+        JFrame frame = new JFrame("JTable Test");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JTable tableHistorique = creatTable();
+        //frame.getContentPane().add(scrollPaneHistorique);
+        frame.pack();
+        frame.setVisible(true);
+    }
+// FULL TEST
+    private static JTable creatTable() {
+        String[] columnNames = {"Colonne 1", "Colonne 2"};
+        Object[][] data = {{"Kathy", "Smith"},{"John", "Doe"}};
+        JTable tableHistorique = new JTable(data,columnNames);
+
+        tableHistorique.setFillsViewportHeight(true);
+
+        return tableHistorique;
+
+    }
+
+    /////////////////////////////////////////////////////////////////////////////
     public JTabbedPane getTabbedPane1() {
         return tabbedPane1;
     }

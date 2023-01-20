@@ -30,9 +30,17 @@ public class MainTest {
         System.out.println("ça marche");
     }
     private static void AfficheFenetre(){
-        FenetreMain f = new FenetreMain();
-        f.setVisible(true);
-        new ControllerHistorique();
+        DAOCommande dao;
+        try {
+            FenetreMain f = new FenetreMain();
+            //f.setVisible(true);
+            dao = new DAOCommande(Singleton.getInstance().cnx);
+            new ControllerHistorique(f,dao).init();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     public static void main(String[] args){

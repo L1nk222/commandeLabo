@@ -12,16 +12,23 @@ public class ControllerHistorique {
     FenetreMain fenetreMain;
     DAOCommande daoCommande;
 
+    List<Commande> commandeList;
+    MyDefaultTableModel mDTM;
 
 
-    public  ControllerHistorique(){
-
+    public  ControllerHistorique(FenetreMain fenetreMain, DAOCommande daoCommande){
+        super();
+        this.fenetreMain = fenetreMain;
+        this.daoCommande = daoCommande;
 
     }
 
     public void init(){
         try {
-            List<Commande> commandes = daoCommande.findAll();
+            commandeList = daoCommande.findAll();
+            mDTM = new MyDefaultTableModel(commandeList);
+            fenetreMain.getTableHistorique().setModel(mDTM);
+            fenetreMain.setVisible(true);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
