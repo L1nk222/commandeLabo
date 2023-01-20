@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entity.Commande;
-import entity.Produit;
 
 public class DAOCommande {
     private Connection cnx;
@@ -25,10 +24,10 @@ public class DAOCommande {
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
             commande = new Commande();
-            commande.setIdRecap(rs.getInt("idRecap"));
+            commande.setEtatCommande(rs.getString("etatCommande"));
             commande.setDateCommande(rs.getString("dateCommande"));
             commande.setDescriptionCommande(rs.getString("descriptionCommande"));
-            commande.setIdComande(rs.getInt("idCommande"));
+            commande.setIdCommande(rs.getInt("idCommande"));
             commande.setIdLabo(rs.getInt("idLabo"));
         }
 
@@ -43,10 +42,10 @@ public class DAOCommande {
         ResultSet rs = ps.executeQuery();
         while (rs.next()){
             Commande commande = new Commande();
-            commande.setIdRecap(rs.getInt("idRecap"));
+            commande.setEtatCommande(rs.getString("etatCommande"));
             commande.setDateCommande(rs.getString("dateCommande"));
             commande.setDescriptionCommande(rs.getString("descriptionCommande"));
-            commande.setIdComande(rs.getInt("idCommande"));
+            commande.setIdCommande(rs.getInt("idCommande"));
             commande.setIdLabo(rs.getInt("idLabo"));
 
 
@@ -60,31 +59,31 @@ public class DAOCommande {
     }
 
     public void save(Commande c) throws SQLException{
-        String SQL= "INSERT INTO commande (dateCommande, descriptionCommande, idCommande, idLabo) VALUES (?,?,?,?);";
+        String SQL= "INSERT INTO commande (dateCommande, descriptionCommande, etatCommande, idLabo) VALUES (?,?,?,?);";
         PreparedStatement ps =cnx.prepareStatement(SQL);
         ps.setString(1,c.getDateCommande() );
         ps.setString(2,c.getDescriptionCommande() );
-        ps.setInt(3, c.getIdComande());
+        ps.setString(3, c.getEtatCommande());
         ps.setInt(4, c.getIdLabo());
         ps.executeQuery();
 
     }
 
     public void update(Commande c) throws SQLException {
-        String SQL = "UPDATE commande SET idRecap=?, dateCommande=?,descriptionCommande=?, idCommande=?";
+        String SQL = "UPDATE commande SET idCommande=?, dateCommande=?,descriptionCommande=?, etatCommande=?";
         PreparedStatement ps = cnx.prepareStatement(SQL);
-        ps.setInt(1,c.getIdRecap());
+        ps.setInt(1,c.getIdCommande());
         ps.setString(2, c.getDateCommande());
         ps.setString(3,c.getDescriptionCommande() );
-        ps.setInt(4, c.getIdComande());
+        ps.setString(4, c.getEtatCommande());
         ps.setInt(5, c.getIdLabo());
         ps.executeQuery();
 
     }
 
     public void delete(Commande c) throws SQLException{
-    int idRecap =  c.getIdRecap();
-    String SQL ="DELETE FROM command WHERE idRecap =?";
+    int idRecap =  c.getIdCommande();
+    String SQL ="DELETE FROM command WHERE idCommande =?";
     PreparedStatement ps = cnx.prepareStatement(SQL);
     ps.setInt(1,idRecap);
     ps.executeQuery();

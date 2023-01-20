@@ -2,6 +2,7 @@ package controller;
 
 import DAO.DAOConnexion;
 import DAO.DAOLaboratoire;
+import DAO.DAOStock;
 import entity.Laboratoire;
 import utils.Singleton;
 import views.FenetreMain;
@@ -10,6 +11,7 @@ import views.FenetreConnexion;
 import entity.User;
 
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigInteger;
@@ -84,9 +86,10 @@ public class ControllerConnexion {
                 //System.out.println("c passe");
                 fenetreCnx.setVisible(false);
                 daol = new DAOLaboratoire(Singleton.getInstance().cnx);
-                FenetreConnexion f=new FenetreConnexion();
+
                 FenetreMain f2 = new FenetreMain();
-                new ControllerHome(daol,f2,f,daol.findByLogin(""+fenetreCnx.getComboLabo().getSelectedItem())).init();
+                new ControllerHome(daol,f2,fenetreCnx,daol.findByLogin(""+fenetreCnx.getComboLabo().getSelectedItem())).init();
+                new ControllerStock(new DAOStock(Singleton.getInstance().cnx),f2).init();
                 //fenetreMain.setVisible(true);
             }
             //System.out.println(password);

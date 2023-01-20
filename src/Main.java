@@ -3,18 +3,13 @@ import DAO.DAOConnexion;
 import DAO.DAOLaboratoire;
 import DAO.DAOProduit;
 import controller.ControllerConnexion;
-import controller.ControllerHome;
 import entity.Commande;
-import controller.ControllerLabo;
 import entity.Laboratoire;
 import entity.Produit;
 import utils.Singleton;
-import views.FenetreCommande;
 import views.FenetreConnexion;
-import views.FenetreLab;
 import views.FenetreMain;
 
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 public class Main {
@@ -71,27 +66,14 @@ public class Main {
             DAOCommande DAO = new DAOCommande(cnx);
             List<Commande> produits = DAO.findAll(0,100);
             for (Commande prod : produits){
-                System.out.println(prod.getIdRecap());
+                System.out.println(prod.getIdCommande());
             }
         }
         catch (SQLException e){
             e.printStackTrace();
         }
     }
-    public static void TestSaveCommande(){
-        try {
-            java.sql.Connection cnx = Singleton.getInstance().cnx;
-            DAOCommande DAO = new DAOCommande(cnx);
-            DAO.save(new Commande(37,"20/01/2023","joli",3,7));
 
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-
-
-        }
-
-    }
     public static void main(String[] args)    {
         System.out.println("Hello world!");
         //TestFindLabo();

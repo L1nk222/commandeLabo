@@ -1,19 +1,45 @@
 package entity;
 
 public class Commande {
-    int idRecap;
+    int idCommande;
     String dateCommande;
     String descriptionCommande;
-    int idComande;
+    String etatCommande;
     int idLabo;
 
 
+    @Override
+    public String toString() {
+        return "Commande{" +
+                "idCommande=" + idCommande +
+                ", dateCommande='" + dateCommande + '\'' +
+                ", descriptionCommande='" + descriptionCommande + '\'' +
+                ", etatCommande='" + etatCommande + '\'' +
+                ", idLabo=" + idLabo +
+                '}';
+    }
 
-    public Commande(int idRecap, String DateCommande, String DescriptionCommande, int idComande,int idLabo) {
-        this.idRecap = idRecap;
+    public String getEtatCommande() {
+        return etatCommande;
+    }
+
+    public void setEtatCommande(String etatCommande) {
+        this.etatCommande = etatCommande;
+    }
+
+    public Commande(int idCommande, String dateCommande, String descriptionCommande, String etatCommande, int idLabo) {
+        this.idCommande = idCommande;
+        this.dateCommande = dateCommande;
+        this.descriptionCommande = descriptionCommande;
+        this.etatCommande = etatCommande;
+        this.idLabo = idLabo;
+    }
+
+    public Commande(int idCommande, String DateCommande, String DescriptionCommande, int idLabo) {
+        this.idCommande = idCommande;
         this.dateCommande = DateCommande;
         this.descriptionCommande = DescriptionCommande;
-        this.idComande = idComande;
+
         this.idLabo = idLabo;
     }
 
@@ -21,23 +47,14 @@ public class Commande {
 
     }
 
-    @Override
-    public String toString() {
-        return "Commande{" +
-                "idRecap=" + idRecap +
-                ", DateCommande='" + dateCommande + '\'' +
-                ", DescriptionCommande='" + descriptionCommande + '\'' +
-                ", idComande=" + idComande + '\''+
-                ", idLabo=" + idLabo +
-                '}';
+
+
+    public int getIdCommande() {
+        return idCommande;
     }
 
-    public int getIdRecap() {
-        return idRecap;
-    }
-
-    public void setIdRecap(int idRecap) {
-        this.idRecap = idRecap;
+    public void setIdCommande(int idCommande) {
+        this.idCommande = idCommande;
     }
 
     public String getDateCommande() {
@@ -56,13 +73,7 @@ public class Commande {
         this.descriptionCommande = descriptionCommande;
     }
 
-    public int getIdComande() {
-        return idComande;
-    }
 
-    public void setIdComande(int idComande) {
-        this.idComande = idComande;
-    }
     public int getIdLabo() { return idLabo; }
 
     public void setIdLabo(int idLabo) {this.idLabo = idLabo;}
