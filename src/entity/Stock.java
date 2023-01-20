@@ -4,28 +4,31 @@ public class Stock {
     int idStock;
     String matricule;
     int quantiteProd;
+    int seuilCritique;
 
 
-    public Stock(int idStock, String matricule, int quantiteProd) {
+    public Stock(int idStock, String matricule, int quantiteProd, int seuilCritique ) {
         this.idStock = idStock;
         this.matricule = matricule;
         this.quantiteProd = quantiteProd;
+        this.seuilCritique = seuilCritique;
     }
     public Stock() {
     }
 
 
-    @Override
-    public String toString() {
-        return "Stock{" +
-                "idStock=" + idStock +
-                ", matricule='" + matricule + '\'' +
-                ", quantiteProd=" + quantiteProd +
-                '}';
-    }
+
 
     public int getIdStock() {
         return idStock;
+    }
+
+    public int getSeuilCritique() {
+        return seuilCritique;
+    }
+
+    public void setSeuilCritique(int seuilCritique) {
+        this.seuilCritique = seuilCritique;
     }
 
     public void setIdStock(int idStock) {

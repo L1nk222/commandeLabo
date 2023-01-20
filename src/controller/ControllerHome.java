@@ -6,6 +6,7 @@ import views.FenetreCommande;
 import views.FenetreConnexion;
 import views.FenetreMain;
 
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -17,6 +18,8 @@ public class ControllerHome {
     FenetreConnexion fenetreConnexion;
     Laboratoire laboratoire;
 
+    ModelTable modelTable;
+
 
     public ControllerHome(DAOLaboratoire daol, FenetreMain fenetreMain, FenetreConnexion fenetreConnexion,Laboratoire laboratoire){
         this.daol=daol;
@@ -27,18 +30,19 @@ public class ControllerHome {
 
     }
     private void fillData(){
-        fenetreMain.getNomLabo().setText("Vous étes au laboratoire:"+laboratoire.getNom());
-        fenetreMain.getIdStockLabel().setText("L'id du stock est :"+laboratoire.getIdStock());
-        fenetreMain.getEmailLabel().setText("L'adresse email est :"+laboratoire.getEmail());
-        fenetreMain.getIdLaboLabel().setText("L'id du laboratoire est :"+laboratoire.getIdLabo());
-        fenetreMain.getAdresseLabel().setText("L'adresse du laboratoire est:"+laboratoire.getAdresse());
-        fenetreMain.getNumPhoneLabel().setText("le numéro de téléphone est :"+laboratoire.getNumTelephone());
-        fenetreMain.getVilleLaboLabel().setText("La ville du laboratoire est :"+laboratoire.getVille());
+        fenetreMain.getNomLabo().setText("Laboratoire :"+laboratoire.getNom());
+        fenetreMain.getIdStockLabel().setText("Id stock :"+laboratoire.getIdStock());
+        fenetreMain.getEmailLabel().setText("Email :"+laboratoire.getEmail());
+        fenetreMain.getIdLaboLabel().setText("Id laboratoire :"+laboratoire.getIdLabo());
+        fenetreMain.getAdresseLabel().setText("Adresse :"+laboratoire.getAdresse());
+        fenetreMain.getNumPhoneLabel().setText("Numéro téléphone :"+laboratoire.getNumTelephone());
+        fenetreMain.getVilleLaboLabel().setText("Ville :"+laboratoire.getVille());
     }
 
 
     public void init(){
         fillData();
+
         fenetreMain.setVisible(true);
 
     }

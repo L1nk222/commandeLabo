@@ -16,7 +16,7 @@ public class MainTest {
             DAOCommande DAO = new DAOCommande(cnx);
             List<Commande> produits = DAO.findAll(0,100);
             for (Commande prod : produits){
-                System.out.println(prod.getIdRecap());
+                System.out.println(prod.getIdCommande());
             }
         }   
         catch (SQLException e){

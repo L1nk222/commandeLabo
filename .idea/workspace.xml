@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="52059758-59e3-4eef-8e55-c21d00941cda" name="Changes" comment="En cours">
+    <list default="true" id="52059758-59e3-4eef-8e55-c21d00941cda" name="Changes" comment="entite et dao stock">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Singleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Singleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAO/DAOFournisseur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/DAOFournisseur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAO/DAOLaboratoire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/DAOLaboratoire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAO/DAOProduit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/DAOProduit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAO/DAOStock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/DAOStock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,22 +49,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;OverrideImplement.generate.javadoc&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
-    &quot;create.test.in.the.same.root&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Antoine/Downloads/mariadb-java-client-3.1.0.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
+    "create.test.in.the.same.root": "true",
+    "last_opened_file_path": "C:/Users/Antoine/Downloads/mariadb-java-client-3.1.0.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
-  <component name="RunManager" selected="Application.Main">
+}]]></component>
+  <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="commandeLabo" />
@@ -68,17 +71,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainTest" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="MainTest" />
-      <module name="commandeLabo" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.MainTest" />
-      <item itemvalue="Application.Main" />
-    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -136,21 +128,7 @@
       <option name="project" value="LOCAL" />
       <updated>1672837657599</updated>
     </task>
-    <task id="LOCAL-00007" summary="En cours">
-      <created>1674144268340</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1674144268340</updated>
-    </task>
-    <task id="LOCAL-00008" summary="En cours">
-      <created>1674217185860</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1674217185860</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -170,7 +148,6 @@
     <MESSAGE value="DAO fournisseur" />
     <MESSAGE value="DAO et entite produit" />
     <MESSAGE value="entite et dao stock" />
-    <MESSAGE value="En cours" />
-    <option name="LAST_COMMIT_MESSAGE" value="En cours" />
+    <option name="LAST_COMMIT_MESSAGE" value="entite et dao stock" />
   </component>
 </project>

@@ -48,6 +48,7 @@ public class DAOStock {
             stock.setMatricule(rs.getString("matricule"));
             stock.setQuantiteProd(rs.getInt("quantiteProd"));
 
+
             stocks.add(stock);
 
         }
