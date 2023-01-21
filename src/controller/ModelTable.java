@@ -19,7 +19,7 @@ public class ModelTable extends JFrame {
         String[] columnNames = {"idStock", "matricule", "quantiteProd","seuilCritique"};
         for (Stock stock:stocks
              ) {
-            Object[][] data = stock;
+            //Object[][] data = stock;
 
         }
         Object[][] data = {{"John", "Doe", 25}, {"Jane", "Doe", 23}};

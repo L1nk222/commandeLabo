@@ -73,7 +73,9 @@ public class Main {
             e.printStackTrace();
         }
     }
-
+    public static void  aled(){
+        System.out.println("STP MAAAAAAAARCHE!");
+    }
     public static void main(String[] args)    {
         System.out.println("Hello world!");
         //TestFindLabo();
@@ -81,15 +83,20 @@ public class Main {
         //TestFindAllProduit();
         //TestSaveCommande();
         //TestFindAllCommande();
+        //programe();
+        aled();
+    }
+    public static void programe(){
+
         DAOLaboratoire daol;
         DAOConnexion daoc;
         try{
-        daoc = new DAOConnexion(Singleton.getInstance().cnx);
-        daol = new DAOLaboratoire(Singleton.getInstance().cnx);
+            daoc = new DAOConnexion(Singleton.getInstance().cnx);
+            daol = new DAOLaboratoire(Singleton.getInstance().cnx);
 
-        FenetreConnexion f=new FenetreConnexion();
-        FenetreMain f2 = new FenetreMain();
-        new ControllerConnexion(f,daoc,daol,f2).init();
+            FenetreConnexion f=new FenetreConnexion();
+            FenetreMain f2 = new FenetreMain();
+            new ControllerConnexion(f,daoc,daol,f2).init();
         }catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

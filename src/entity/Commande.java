@@ -19,13 +19,7 @@ public class Commande {
                 '}';
     }
 
-    public String getEtatCommande() {
-        return etatCommande;
-    }
 
-    public void setEtatCommande(String etatCommande) {
-        this.etatCommande = etatCommande;
-    }
 
     public Commande(int idCommande, String dateCommande, String descriptionCommande, String etatCommande, int idLabo) {
         this.idCommande = idCommande;
@@ -77,4 +71,12 @@ public class Commande {
     public int getIdLabo() { return idLabo; }
 
     public void setIdLabo(int idLabo) {this.idLabo = idLabo;}
+    public String getEtatCommande() {
+        return etatCommande;
+    }
+
+    public void setEtatCommande(String etatCommande) {
+        this.etatCommande = etatCommande;
+    }
+
 }
