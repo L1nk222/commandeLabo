@@ -41,8 +41,12 @@ public class FenetreMain extends JFrame {
         JFrame frame = new JFrame("JTable Test");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JTable tableHistorique = creatTable();
+
+        JScrollPane scrollPaneHistorique = new JScrollPane(frame);
+        frame.add(scrollPaneHistorique);
+        frame.setSize(300, 150);
         //frame.getContentPane().add(scrollPaneHistorique);
-        frame.pack();
+        //frame.pack();
         frame.setVisible(true);
     }
 // FULL TEST
