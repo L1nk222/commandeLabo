@@ -2,7 +2,7 @@ package views;
 
 import javax.swing.*;
 
-public class FenetreMain extends JFrame{
+public class FenetreMain extends JFrame {
     private JTabbedPane tabbedPane1;
 
     public JLabel getNomLabo() {

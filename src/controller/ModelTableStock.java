@@ -2,7 +2,7 @@ package controller;
 
 import entity.Commande;
 import entity.Stock;
-
+import javax.management.loading.PrivateClassLoader;
 import javax.swing.table.DefaultTableModel;
 import java.util.HashSet;
 import java.util.List;

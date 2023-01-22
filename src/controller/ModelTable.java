@@ -9,19 +9,15 @@ import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
 
-public class ModelTable extends JFrame {
 
+public class ModelTable extends JFrame {
     private JTable table;
     private MyTableModel tableModel;
 
-    public ModelTable(List<Stock> stocks) {
+    public ModelTable(/*List<Stock> stocks*/) {
         // Initialiser les données de la table
-        String[] columnNames = {"idStock", "matricule", "quantiteProd","seuilCritique"};
-        for (Stock stock:stocks
-             ) {
-            Object[][] data = stock;
+        String[] columnNames = {"idStock", "matricule", "quantiteProd"};
 
-        }
         Object[][] data = {{"John", "Doe", 25}, {"Jane", "Doe", 23}};
 
         // Créer un modèle de table personnalisé
@@ -31,14 +27,19 @@ public class ModelTable extends JFrame {
         table = new JTable(tableModel);
 
         // Ajouter la table à un JScrollPane pour ajouter une barre de défilement
-        //JScrollPane scrollPane = new JScrollPane(table);
-        //add(scrollPane);
+        JScrollPane scrollPane = new JScrollPane(table);
+        add(scrollPane);
+
+        setTitle("JTable Example");
+        setSize(300, 150);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
 
     }
 
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
         new ModelTable();
-    }*/
+    }
 
     // Classe interne pour définir un modèle de table personnalisé
     class MyTableModel extends AbstractTableModel {

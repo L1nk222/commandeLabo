@@ -31,10 +31,9 @@ public class ControllerStock {
             for (Stock stock: stocks
                  ) {
                 System.out.println(stock);
-
             }
             modelTable = new ModelTableStock(stocks);
-            fenetre.getTableStock().setModel(modelTable);
+            fenetre.getTableStock().setModel( modelTable);
             System.out.println("fin");
         } catch (SQLException e) {
             // TODO Auto-generated catch block
