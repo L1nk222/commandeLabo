@@ -6,12 +6,12 @@ import javax.swing.table.DefaultTableModel;
 import java.util.HashSet;
 import java.util.List;
 
-public class MyDefaultTableModel  extends DefaultTableModel {
+public class DefaultTableHistorique extends DefaultTableModel {
     List<Commande> commandeList;
-    private String[] columNames = {"idCommande","dateCommande","descriptionCommande","etatCommande"};
+    private String[] columNames = {"idCommande","DateCommande","DescriptionCommande","EtatCommande"};
     HashSet<Commande> modified;
 
-    public MyDefaultTableModel(List<Commande>commandeList){
+    public DefaultTableHistorique(List<Commande>commandeList){
         super();
         this.commandeList = commandeList;
         modified = new HashSet<Commande>();
