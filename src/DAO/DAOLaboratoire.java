@@ -1,6 +1,8 @@
 package DAO;
 
 import entity.Laboratoire;
+import entity.Stock;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -63,7 +65,7 @@ public class DAOLaboratoire {
             return findAll(0,4000);
         }
 
-        public Laboratoire findByLogin(String nom)throws SQLException{
+        public Laboratoire findByName(String nom)throws SQLException{
             Laboratoire labo =null;
             String SQL= "SELECT * FROM laboratoire where nom=?";
             PreparedStatement ps = cnx.prepareStatement(SQL);
@@ -81,6 +83,8 @@ public class DAOLaboratoire {
             }
             return labo;
         }
+
+
 
 
 }

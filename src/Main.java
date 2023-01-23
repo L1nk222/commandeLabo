@@ -76,17 +76,8 @@ public class Main {
     public static void  aled(){
         System.out.println("STP MAAAAAAAARCHE!");
     }
-    public static void main(String[] args)    {
-        System.out.println("Hello world!");
-        //TestFindLabo();
-        //TestFindAllLabo();
-        //TestFindAllProduit();
-        //TestSaveCommande();
-        //TestFindAllCommande();
-        //programe();
-        aled();
-    }
-    public static void programe(){
+
+    public static void MainTest(){
 
         DAOLaboratoire daol;
         DAOConnexion daoc;
@@ -101,5 +92,16 @@ public class Main {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+
+    }
+    public static void main(String[] args)    {
+        System.out.println("Hello world!");
+        //TestFindLabo();
+        //TestFindAllLabo();
+        //TestFindAllProduit();
+        //TestSaveCommande();
+        //TestFindAllCommande();
+        MainTest();
+        //aled();
     }
 }

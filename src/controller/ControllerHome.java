@@ -13,7 +13,6 @@ import java.util.List;
 public class ControllerHome {
 
     DAOLaboratoire daol;
-
     FenetreMain fenetreMain;
     FenetreConnexion fenetreConnexion;
     Laboratoire laboratoire;
@@ -42,7 +41,6 @@ public class ControllerHome {
 
     public void init(){
         fillData();
-
         fenetreMain.setVisible(true);
 
     }

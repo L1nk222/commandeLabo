@@ -18,16 +18,16 @@ public class DAOProduit {
         this.cnx = cnx;
     }
 
-    public Produit find(int id) throws SQLException {
+    public Produit find(String matricule) throws SQLException {
         Produit produit = null;
         String SQL = "SELECT * FROM produit where matricule=?";
         PreparedStatement ps = cnx.prepareStatement(SQL);
-        ps.setInt(1, id);
+        ps.setString(1, matricule);
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
             produit = new Produit();
             produit.setMatricule(rs.getString("matricule"));
-            produit.setNom(rs.getString("nom"));
+            produit.setNom(rs.getString("libelle"));
             produit.setDescription(rs.getString("description"));
             produit.setPoids(rs.getInt("poids"));
             produit.setIdFournisseur(rs.getInt("idFournisseur"));
@@ -46,7 +46,7 @@ public class DAOProduit {
         while (rs.next()) {
             Produit produit = new Produit();
             produit.setMatricule(rs.getString("matricule"));
-            produit.setNom(rs.getString("nom"));
+            produit.setNom(rs.getString("libelle"));
             produit.setDescription(rs.getString("description"));
             produit.setPoids(rs.getInt("poids"));
             produit.setIdFournisseur(rs.getInt("idFournisseur"));

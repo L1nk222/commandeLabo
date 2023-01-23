@@ -1,6 +1,7 @@
 package views;
 
 import javax.swing.*;
+import java.awt.event.ComponentAdapter;
 
 public class FenetreMain extends JFrame {
     private JTabbedPane tabbedPane1;
@@ -35,6 +36,8 @@ public class FenetreMain extends JFrame {
     private JLabel emailLabel;
     private JLabel idStockLabel;
     private JScrollPane scrollPaneHistorique;
+    private JButton rechercherButton;
+    private JLabel produitLabel;
 
     /////////////////////////////////////////////////////////////////////////////
     public static void main(String[] args){
@@ -182,6 +185,14 @@ public class FenetreMain extends JFrame {
         this.tableHistorique = tableHistorique;
     }
 
+    public JLabel getProduitLabel() {
+        return produitLabel;
+    }
+
+    public void setProduitLabel(JLabel produitLabel) {
+        this.produitLabel = produitLabel;
+    }
+
     public JLabel getVilleLaboLabel() {
         return villeLaboLabel;
     }
@@ -236,9 +247,8 @@ public class FenetreMain extends JFrame {
         setExtendedState(FenetreLab.MAXIMIZED_BOTH);
 
 
-
-
-
+        tableStock.addComponentListener(new ComponentAdapter() {
+        });
     }
     public void home(){
         setContentPane(Home);
@@ -251,5 +261,13 @@ public class FenetreMain extends JFrame {
         tabbedPane1.setSelectedComponent(Commande);
         setContentPane(tabbedPane1);
 
+    }
+
+    public JButton getRechercherButton() {
+        return rechercherButton;
+    }
+
+    public void setRechercherButton(JButton rechercherButton) {
+        this.rechercherButton = rechercherButton;
     }
 }
