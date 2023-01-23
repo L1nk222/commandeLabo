@@ -3,7 +3,7 @@ package views;
 import javax.swing.*;
 import java.awt.event.ComponentAdapter;
 
-public class FenetreMain extends JFrame {
+public class FenetreMain extends JFrame{
     private JTabbedPane tabbedPane1;
 
     public JLabel getNomLabo() {
@@ -38,32 +38,29 @@ public class FenetreMain extends JFrame {
     private JScrollPane scrollPaneHistorique;
     private JButton rechercherButton;
     private JLabel produitLabel;
+    private JButton rechercheButtonHisto;
+    private JComboBox comboBox1;
 
     /////////////////////////////////////////////////////////////////////////////
-    public static void main(String[] args){
-        JFrame frame = new JFrame("JTable Test");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JTable tableHistorique = creatTable();
-
-        JScrollPane scrollPaneHistorique = new JScrollPane(frame);
-        frame.add(scrollPaneHistorique);
-        frame.setSize(300, 150);
-        //frame.getContentPane().add(scrollPaneHistorique);
-        //frame.pack();
-        frame.setVisible(true);
-    }
-// FULL TEST
-    private static JTable creatTable() {
-        String[] columnNames = {"Colonne 1", "Colonne 2"};
-        Object[][] data = {{"Kathy", "Smith"},{"John", "Doe"}};
-        JTable tableHistorique = new JTable(data,columnNames);
-
-        tableHistorique.setFillsViewportHeight(true);
-
-        return tableHistorique;
+    public  FenetreMain(){
+        tabbedPane1.setSelectedComponent(Home);
+        setContentPane(tabbedPane1);
+        setSize(700,600);
+        setExtendedState(FenetreLab.MAXIMIZED_BOTH);
 
     }
+    public void home(){
+        setContentPane(Home);
+    }
+    public void Stock(){
+        tabbedPane1.setSelectedComponent(Stock);
+        setContentPane(tabbedPane1);
+    }
+    public void Commande(){
+        tabbedPane1.setSelectedComponent(Commande);
+        setContentPane(tabbedPane1);
 
+    }
     /////////////////////////////////////////////////////////////////////////////
     public JTabbedPane getTabbedPane1() {
         return tabbedPane1;
@@ -241,26 +238,30 @@ public class FenetreMain extends JFrame {
         this.idStockLabel = idStockLabel;
     }
 
-    public  FenetreMain(){
-        tabbedPane1.setSelectedComponent(Home);
-        setContentPane(tabbedPane1);
-        setExtendedState(FenetreLab.MAXIMIZED_BOTH);
+    public JScrollPane getScrollPaneHistorique() {
+        return scrollPaneHistorique;
+    }
 
+    public void setScrollPaneHistorique(JScrollPane scrollPaneHistorique) {
+        this.scrollPaneHistorique = scrollPaneHistorique;
+    }
 
+    public JButton getRechercheButton() {
+        return rechercheButtonHisto;
+    }
+
+    public void setRechercheButton(JButton rechercheButtonHisto) {
+        this.rechercheButtonHisto = rechercheButtonHisto;
+    }
+
+    public JComboBox getComboBox1() {
+        return comboBox1;
         tableStock.addComponentListener(new ComponentAdapter() {
         });
     }
-    public void home(){
-        setContentPane(Home);
-    }
-    public void Stock(){
-        tabbedPane1.setSelectedComponent(Stock);
-        setContentPane(tabbedPane1);
-    }
-    public void Commande(){
-        tabbedPane1.setSelectedComponent(Commande);
-        setContentPane(tabbedPane1);
 
+    public void setComboBox1(JComboBox comboBox1) {
+        this.comboBox1 = comboBox1;
     }
 
     public JButton getRechercherButton() {

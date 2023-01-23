@@ -55,8 +55,53 @@ public class DAOCommande {
         return commandes;
     }
     public List<Commande> findAll()throws SQLException{
-        return findAll(0,4000);
+        return findAll(0,400);
     }
+    public List<Commande> findHitorique(String recheche, int limit, int offset) throws SQLException{
+        List<Commande> commandes = new ArrayList<>();
+        if (1 == 1 ){
+            recheche = "%"+recheche+"%";
+            String SQL2 = "SELECT * FROM commande WHERE dateCommande= ? ORDER BY dateCommande DESC LIMIT ? OFFSET ? ";
+            PreparedStatement ps = cnx.prepareStatement(SQL2);
+            ps.setString(1,recheche);
+            ps.setInt(2, offset);
+            ps.setInt(3, limit);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Commande commande = new Commande();
+                commande.setEtatCommande(rs.getString("etatCommande"));
+                commande.setDateCommande(rs.getString("dateCommande"));
+                commande.setDescriptionCommande(rs.getString("descriptionCommande"));
+                commande.setIdCommande(rs.getInt("idCommande"));
+                commande.setIdLabo(rs.getInt("idLabo"));
+
+                commandes.add(commande);
+            }
+            return commandes;
+        } else {
+        String SQL = "SELECT * FROM commande ORDER BY dateCommande DESC LIMIT ? OFFSET ? ";
+        PreparedStatement ps = cnx.prepareStatement(SQL);
+        ps.setInt(1, offset);
+        ps.setInt(2, limit);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Commande commande = new Commande();
+            commande.setEtatCommande(rs.getString("etatCommande"));
+            commande.setDateCommande(rs.getString("dateCommande"));
+            commande.setDescriptionCommande(rs.getString("descriptionCommande"));
+            commande.setIdCommande(rs.getInt("idCommande"));
+            commande.setIdLabo(rs.getInt("idLabo"));
+
+            commandes.add(commande);
+            }
+            return commandes;
+        }
+
+    }
+    public List<Commande> findHitorique(String recheche) throws SQLException {
+        return findHitorique(recheche, 0,400);
+    }
+
 
     public void save(Commande c) throws SQLException{
         String SQL= "INSERT INTO commande (dateCommande, descriptionCommande, etatCommande, idLabo) VALUES (?,?,?,?);";
