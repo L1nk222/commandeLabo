@@ -123,10 +123,11 @@ public class ControllerStock {
         public void init() {
         try {
             stocks = daoStock.findAll();
+            /*
             for (Stock stock: stocks
                  ) {
                 System.out.println(stock.getMatricule());
-            }
+            }*/
             initTableStock();
             System.out.println("fin");
         } catch (SQLException e) {

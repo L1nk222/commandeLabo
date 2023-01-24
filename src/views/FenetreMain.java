@@ -23,7 +23,7 @@ public class FenetreMain extends JFrame{
     private JTable tableStock;
     private JTextField rechercheHistorique;
     private JTable tableHistorique;
-    private JTextField textField1;
+    private JTextField QuantiteCommande;
     private JTable table1;
     private JTextArea textArea1;
     private JButton commanderButton;
@@ -44,6 +44,11 @@ public class FenetreMain extends JFrame{
     private JLabel idFournisseurLabel;
     private JLabel poidsLabel;
     private JTextPane descriptionTextPane;
+    private JButton ajouterUneLigneButton;
+    private JButton supprimerUneLigneButton;
+    private JComboBox produitCommande;
+    private JLabel idCommandeAutoLabel;
+    private JPanel commandePanel;
     private JTextArea descriptionTextArea;
 
     /////////////////////////////////////////////////////////////////////////////
@@ -107,6 +112,54 @@ public class FenetreMain extends JFrame{
         return descriptionLabel;
     }
 
+    public JPanel getCommandePanel() {
+        return commandePanel;
+    }
+
+    public void setCommandePanel(JPanel commandePanel) {
+        this.commandePanel = commandePanel;
+    }
+
+    public JTextField getQuantiteCommande() {
+        return QuantiteCommande;
+    }
+
+    public void setQuantiteCommande(JTextField quantiteCommande) {
+        QuantiteCommande = quantiteCommande;
+    }
+
+    public JButton getAjouterUneLigneButton() {
+        return ajouterUneLigneButton;
+    }
+
+    public void setAjouterUneLigneButton(JButton ajouterUneLigneButton) {
+        this.ajouterUneLigneButton = ajouterUneLigneButton;
+    }
+
+    public JButton getSupprimerUneLigneButton() {
+        return supprimerUneLigneButton;
+    }
+
+    public void setSupprimerUneLigneButton(JButton supprimerUneLigneButton) {
+        this.supprimerUneLigneButton = supprimerUneLigneButton;
+    }
+
+    public JComboBox getProduitCommande() {
+        return produitCommande;
+    }
+
+    public void setProduitCommande(JComboBox produitCommande) {
+        this.produitCommande = produitCommande;
+    }
+
+    public JLabel getIdCommandeAutoLabel() {
+        return idCommandeAutoLabel;
+    }
+
+    public void setIdCommandeAutoLabel(JLabel idCommandeAutoLabel) {
+        this.idCommandeAutoLabel = idCommandeAutoLabel;
+    }
+
     public void setDescriptionLabel(JLabel descriptionLabel) {
         this.descriptionLabel = descriptionLabel;
     }
@@ -164,11 +217,11 @@ public class FenetreMain extends JFrame{
     }
 
     public JTextField getTextField1() {
-        return textField1;
+        return QuantiteCommande;
     }
 
     public void setTextField1(JTextField textField1) {
-        this.textField1 = textField1;
+        this.QuantiteCommande = textField1;
     }
 
     public JTable getTable1() {
