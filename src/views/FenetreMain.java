@@ -36,9 +36,15 @@ public class FenetreMain extends JFrame{
     private JLabel idStockLabel;
     private JScrollPane scrollPaneHistorique;
     private JButton rechercherButton;
-    private JLabel produitLabel;
+    private JLabel libelle;
     private JButton rechercheButtonHisto;
     private JComboBox comboBoxHisto;
+    private JLabel matriculeLabel;
+    private JLabel descriptionLabel;
+    private JLabel idFournisseurLabel;
+    private JLabel poidsLabel;
+    private JTextPane descriptionTextPane;
+    private JTextArea descriptionTextArea;
 
     /////////////////////////////////////////////////////////////////////////////
     public  FenetreMain(){
@@ -63,6 +69,62 @@ public class FenetreMain extends JFrame{
     /////////////////////////////////////////////////////////////////////////////
     public JTabbedPane getTabbedPane1() {
         return tabbedPane1;
+    }
+
+    public JTextPane getDescriptionTextPane() {
+        return descriptionTextPane;
+    }
+
+    public void setDescriptionTextPane(JTextPane descriptionTextPane) {
+        this.descriptionTextPane = descriptionTextPane;
+    }
+
+    public JTextArea getDescriptionTextArea() {
+        return descriptionTextArea;
+    }
+
+    public void setDescriptionTextArea(JTextArea descriptionTextArea) {
+        this.descriptionTextArea = descriptionTextArea;
+    }
+
+    public JLabel getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(JLabel libelle) {
+        this.libelle = libelle;
+    }
+
+    public JLabel getMatriculeLabel() {
+        return matriculeLabel;
+    }
+
+    public void setMatriculeLabel(JLabel matriculeLabel) {
+        this.matriculeLabel = matriculeLabel;
+    }
+
+    public JLabel getDescriptionLabel() {
+        return descriptionLabel;
+    }
+
+    public void setDescriptionLabel(JLabel descriptionLabel) {
+        this.descriptionLabel = descriptionLabel;
+    }
+
+    public JLabel getIdFournisseurLabel() {
+        return idFournisseurLabel;
+    }
+
+    public void setIdFournisseurLabel(JLabel idFournisseurLabel) {
+        this.idFournisseurLabel = idFournisseurLabel;
+    }
+
+    public JLabel getPoidsLabel() {
+        return poidsLabel;
+    }
+
+    public void setPoidsLabel(JLabel poidsLabel) {
+        this.poidsLabel = poidsLabel;
     }
 
     public void setTabbedPane1(JTabbedPane tabbedPane1) {
@@ -182,11 +244,11 @@ public class FenetreMain extends JFrame{
     }
 
     public JLabel getProduitLabel() {
-        return produitLabel;
+        return libelle;
     }
 
     public void setProduitLabel(JLabel produitLabel) {
-        this.produitLabel = produitLabel;
+        this.libelle = produitLabel;
     }
 
     public JLabel getVilleLaboLabel() {
