@@ -256,8 +256,6 @@ public class FenetreMain extends JFrame{
 
     public JComboBox getComboBox1() {
         return comboBox1;
-        tableStock.addComponentListener(new ComponentAdapter() {
-        });
     }
 
     public void setComboBox1(JComboBox comboBox1) {
