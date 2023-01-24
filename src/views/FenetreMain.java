@@ -1,7 +1,6 @@
 package views;
 
 import javax.swing.*;
-import java.awt.event.ComponentAdapter;
 
 public class FenetreMain extends JFrame{
     private JTabbedPane tabbedPane1;
@@ -39,7 +38,7 @@ public class FenetreMain extends JFrame{
     private JButton rechercherButton;
     private JLabel produitLabel;
     private JButton rechercheButtonHisto;
-    private JComboBox comboBox1;
+    private JComboBox comboBoxHisto;
 
     /////////////////////////////////////////////////////////////////////////////
     public  FenetreMain(){
@@ -255,11 +254,11 @@ public class FenetreMain extends JFrame{
     }
 
     public JComboBox getComboBox1() {
-        return comboBox1;
+        return comboBoxHisto;
     }
 
     public void setComboBox1(JComboBox comboBox1) {
-        this.comboBox1 = comboBox1;
+        this.comboBoxHisto = comboBox1;
     }
 
     public JButton getRechercherButton() {

@@ -179,7 +179,7 @@
                   </component>
                 </children>
               </scrollpane>
-              <component id="32df3" class="javax.swing.JButton" binding="rechercheButton" default-binding="true">
+              <component id="32df3" class="javax.swing.JButton" binding="rechercheButtonHisto">
                 <constraints>
                   <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -187,7 +187,7 @@
                   <text value="Recherche"/>
                 </properties>
               </component>
-              <component id="99fcf" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+              <component id="99fcf" class="javax.swing.JComboBox" binding="comboBoxHisto">
                 <constraints>
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
