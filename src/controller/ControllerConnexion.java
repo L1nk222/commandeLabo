@@ -90,7 +90,7 @@ public class ControllerConnexion {
                 FenetreMain f2 = new FenetreMain();
                 new ControllerHome(daol,f2,fenetreCnx,daol.findByName(""+fenetreCnx.getComboLabo().getSelectedItem())).init();
                 new ControllerStock(daos,daop,f2,daol.findByName(""+fenetreCnx.getComboLabo().getSelectedItem())).init();
-                new ControllerCommande(daolc,daoc,f2,daol.findByName(""+fenetreCnx.getComboLabo().getSelectedItem()));
+                new ControllerCommande(daolc,daoc,f2,daol.findByName(""+fenetreCnx.getComboLabo().getSelectedItem())).init();
                 //fenetreMain.setVisible(true);
             }
             //System.out.println(password);

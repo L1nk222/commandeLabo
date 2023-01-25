@@ -3,7 +3,20 @@ package entity;
 public class LigneCommande {
     int idCommande;
     String matriculProd;
+    String NomProd;
     int quantiteProd;
+
+
+
+    public LigneCommande(int idCommande, String matriculProd, String nomProd, int quantiteProd) {
+        this.idCommande = idCommande;
+        this.matriculProd = matriculProd;
+        this.NomProd = nomProd;
+        this.quantiteProd = quantiteProd;
+    }
+
+
+
 
     public LigneCommande(int idCommande, String matriculProd, int quantiteProd) {
         this.idCommande = idCommande;
@@ -23,6 +36,13 @@ public class LigneCommande {
                 '}';
     }
 
+    public String getNomProd() {
+        return NomProd;
+    }
+
+    public void setNomProd(String nomProd) {
+        NomProd = nomProd;
+    }
     public int getIdCommande() {
         return idCommande;
     }

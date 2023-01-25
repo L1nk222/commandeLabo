@@ -33,6 +33,26 @@ public class DAOCommande {
 
         return commande;
     }
+
+    public Commande find(int id) throws SQLException{
+
+        Commande commande = null;
+        String SQL = "SELECT * FROM commande where idCommande=?";
+        PreparedStatement ps = cnx.prepareStatement(SQL);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            commande = new Commande();
+            commande.setEtatCommande(rs.getString("etatCommande"));
+            commande.setDateCommande(rs.getString("dateCommande"));
+            commande.setDescriptionCommande(rs.getString("descriptionCommande"));
+            commande.setIdCommande(rs.getInt("idCommande"));
+            commande.setIdLabo(rs.getInt("idLabo"));
+        }
+
+        return commande;
+    }
     public List<Commande> findAll(int limit, int offset) throws SQLException{
         List<Commande> commandes = new ArrayList<>();
         String SQL = "SELECT * FROM commande LIMIT ? OFFSET ?";
@@ -55,7 +75,7 @@ public class DAOCommande {
         return commandes;
     }
     public List<Commande> findAll()throws SQLException{
-        return findAll(0,400);
+        return findAll(0,2000);
     }
     public List<Commande> findHitorique(String recheche, int limit, int offset) throws SQLException{
         List<Commande> commandes = new ArrayList<>();
@@ -104,12 +124,13 @@ public class DAOCommande {
 
 
     public void save(Commande c) throws SQLException{
-        String SQL= "INSERT INTO commande (dateCommande, descriptionCommande, etatCommande, idLabo) VALUES (?,?,?,?);";
+        String SQL= "INSERT INTO commande (idCommande,dateCommande, descriptionCommande, etatCommande, idLabo) VALUES (?,?,?,?,?);";
         PreparedStatement ps =cnx.prepareStatement(SQL);
-        ps.setString(1,c.getDateCommande() );
-        ps.setString(2,c.getDescriptionCommande() );
-        ps.setString(3, c.getEtatCommande());
-        ps.setInt(4, c.getIdLabo());
+        ps.setInt(1,c.getIdCommande());
+        ps.setString(2,c.getDateCommande() );
+        ps.setString(3,c.getDescriptionCommande() );
+        ps.setString(4, c.getEtatCommande());
+        ps.setInt(5, c.getIdLabo());
         ps.executeQuery();
 
     }

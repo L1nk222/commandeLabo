@@ -24,7 +24,7 @@ public class FenetreMain extends JFrame{
     private JTextField rechercheHistorique;
     private JTable tableHistorique;
     private JTextField QuantiteCommande;
-    private JTable table1;
+    private JTable tableLigneCommande;
     private JTextArea textArea1;
     private JButton commanderButton;
     private JLabel nomLabo;
@@ -49,6 +49,7 @@ public class FenetreMain extends JFrame{
     private JComboBox produitCommande;
     private JLabel idCommandeAutoLabel;
     private JPanel commandePanel;
+    private JLabel idLaboratoireLabel;
     private JTextArea descriptionTextArea;
 
     /////////////////////////////////////////////////////////////////////////////
@@ -225,11 +226,11 @@ public class FenetreMain extends JFrame{
     }
 
     public JTable getTable1() {
-        return table1;
+        return tableLigneCommande;
     }
 
     public void setTable1(JTable table1) {
-        this.table1 = table1;
+        this.tableLigneCommande = table1;
     }
 
     public JTextArea getTextArea1() {
@@ -382,5 +383,21 @@ public class FenetreMain extends JFrame{
 
     public void setRechercherButton(JButton rechercherButton) {
         this.rechercherButton = rechercherButton;
+    }
+
+    public JLabel getIdLaboratoireLabel() {
+        return idLaboratoireLabel;
+    }
+
+    public void setIdLaboratoireLabel(JLabel idLaboratoireLabel) {
+        this.idLaboratoireLabel = idLaboratoireLabel;
+    }
+
+    public JTable getTableLigneCommande() {
+        return tableLigneCommande;
+    }
+
+    public void setTableLigneCommande(JTable tableLigneCommande) {
+        this.tableLigneCommande = tableLigneCommande;
     }
 }

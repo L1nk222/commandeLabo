@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import entity.Laboratoire;
 import entity.LigneCommande;
+import entity.Stock;
 
 public class DAOLigneCommande {
     private Connection cnx;
@@ -30,6 +32,24 @@ public class DAOLigneCommande {
 
         return commande;
     }
+    public LigneCommande findByMatricule(String matricule) throws SQLException {
+        LigneCommande commande = null;
+        String SQL = "SELECT * FROM ligneCommande where matriculeProd=?";
+        PreparedStatement ps = cnx.prepareStatement(SQL);
+        ps.setString(1, matricule);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            commande = new LigneCommande();
+            commande.setIdCommande(rs.getInt("idCommande"));
+            commande.setMatriculProd(rs.getString("matriculeProd"));
+            commande.setQuantiteProd(rs.getInt("quantiteProd"));
+
+        }
+
+        return commande;
+    }
+
+
     public List<LigneCommande> findAll(int limit, int offset) throws SQLException{
         List<LigneCommande> commandes = new ArrayList<>();
         String SQL = "SELECT * FROM ligneCommande LIMIT ? OFFSET ?";
@@ -52,7 +72,7 @@ public class DAOLigneCommande {
         return findAll(0,4000);
     }
     public void save(LigneCommande c) throws SQLException{
-        String SQL= "INSERT INTO ligneCommande (IdCommande, MatriculProd, QuantiteProd) VALUES (?,?,?);";
+        String SQL= "INSERT INTO ligneCommande (idCommande, matriculeProd, quantiteProd) VALUES (?,?,?);";
         PreparedStatement ps =cnx.prepareStatement(SQL);
         ps.setInt(1,c.getIdCommande() );
         ps.setString(2,c.getMatriculProd() );
@@ -63,7 +83,7 @@ public class DAOLigneCommande {
     }
 
     public void update(LigneCommande c) throws SQLException {
-        String SQL = "UPDATE ligneCommande SET IdCommande=?, MatriculProd=?,QuantiteProd=?";
+        String SQL = "UPDATE ligneCommande SET idCommande=?, matriculeProd=?,quantiteProd=?";
         PreparedStatement ps = cnx.prepareStatement(SQL);
         ps.setInt(1,c.getIdCommande());
         ps.setString(2,c.getMatriculProd() );
@@ -75,10 +95,30 @@ public class DAOLigneCommande {
 
     public void delete(LigneCommande c) throws SQLException{
         int IdCommande =  c.getIdCommande();
-        String SQL ="DELETE FROM ligneCommande WHERE IdCommande =?";
+        String SQL ="DELETE FROM ligneCommande WHERE idCommande =?";
         PreparedStatement ps = cnx.prepareStatement(SQL);
         ps.setInt(1,IdCommande);
         ps.executeQuery();
+    }
+
+    public List<LigneCommande> findLigneByCommande(Laboratoire laboratoire, int idCommande) throws SQLException{
+        List<LigneCommande> ligneCommandes = new ArrayList<>();
+        String SQL = "SELECT * FROM lignecommande,Produit,laboratoire,commande where nom= ? AND lignecommande.idCommande =? AND commande.idLabo=laboratoire.idLabo " +
+                " AND lignecommande.idCommande=commande.idCommande AND lignecommande.matriculeProd=produit.matricule";
+        PreparedStatement ps = cnx.prepareStatement(SQL);
+        ps.setString(1, laboratoire.getNom());
+        ps.setInt(2,idCommande);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            LigneCommande ligneCommande = new LigneCommande();
+            ligneCommande.setIdCommande(rs.getInt("idCommande"));
+            ligneCommande.setMatriculProd(rs.getString("matriculeProd"));
+            ligneCommande.setNomProd(rs.getString("libelle"));
+            ligneCommande.setQuantiteProd(rs.getInt("quantiteProd"));
+            ligneCommandes.add(ligneCommande);
+
+        }
+        return ligneCommandes;
     }
 
 
