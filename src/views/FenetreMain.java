@@ -23,7 +23,7 @@ public class FenetreMain extends JFrame{
     private JTable tableStock;
     private JTextField rechercheHistorique;
     private JTable tableHistorique;
-    private JTextField textField1;
+    private JTextField QuantiteCommande;
     private JTable table1;
     private JTextArea textArea1;
     private JButton commanderButton;
@@ -36,9 +36,20 @@ public class FenetreMain extends JFrame{
     private JLabel idStockLabel;
     private JScrollPane scrollPaneHistorique;
     private JButton rechercherButton;
-    private JLabel produitLabel;
+    private JLabel libelle;
     private JButton rechercheButtonHisto;
     private JComboBox comboBoxHisto;
+    private JLabel matriculeLabel;
+    private JLabel descriptionLabel;
+    private JLabel idFournisseurLabel;
+    private JLabel poidsLabel;
+    private JTextPane descriptionTextPane;
+    private JButton ajouterUneLigneButton;
+    private JButton supprimerUneLigneButton;
+    private JComboBox produitCommande;
+    private JLabel idCommandeAutoLabel;
+    private JPanel commandePanel;
+    private JTextArea descriptionTextArea;
     private JButton buttonResetHisto;
     private JLabel JLabelidCommand;
     private JTable tableListCommande;
@@ -67,6 +78,110 @@ public class FenetreMain extends JFrame{
     /////////////////////////////////////////////////////////////////////////////
     public JTabbedPane getTabbedPane1() {
         return tabbedPane1;
+    }
+
+    public JTextPane getDescriptionTextPane() {
+        return descriptionTextPane;
+    }
+
+    public void setDescriptionTextPane(JTextPane descriptionTextPane) {
+        this.descriptionTextPane = descriptionTextPane;
+    }
+
+    public JTextArea getDescriptionTextArea() {
+        return descriptionTextArea;
+    }
+
+    public void setDescriptionTextArea(JTextArea descriptionTextArea) {
+        this.descriptionTextArea = descriptionTextArea;
+    }
+
+    public JLabel getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(JLabel libelle) {
+        this.libelle = libelle;
+    }
+
+    public JLabel getMatriculeLabel() {
+        return matriculeLabel;
+    }
+
+    public void setMatriculeLabel(JLabel matriculeLabel) {
+        this.matriculeLabel = matriculeLabel;
+    }
+
+    public JLabel getDescriptionLabel() {
+        return descriptionLabel;
+    }
+
+    public JPanel getCommandePanel() {
+        return commandePanel;
+    }
+
+    public void setCommandePanel(JPanel commandePanel) {
+        this.commandePanel = commandePanel;
+    }
+
+    public JTextField getQuantiteCommande() {
+        return QuantiteCommande;
+    }
+
+    public void setQuantiteCommande(JTextField quantiteCommande) {
+        QuantiteCommande = quantiteCommande;
+    }
+
+    public JButton getAjouterUneLigneButton() {
+        return ajouterUneLigneButton;
+    }
+
+    public void setAjouterUneLigneButton(JButton ajouterUneLigneButton) {
+        this.ajouterUneLigneButton = ajouterUneLigneButton;
+    }
+
+    public JButton getSupprimerUneLigneButton() {
+        return supprimerUneLigneButton;
+    }
+
+    public void setSupprimerUneLigneButton(JButton supprimerUneLigneButton) {
+        this.supprimerUneLigneButton = supprimerUneLigneButton;
+    }
+
+    public JComboBox getProduitCommande() {
+        return produitCommande;
+    }
+
+    public void setProduitCommande(JComboBox produitCommande) {
+        this.produitCommande = produitCommande;
+    }
+
+    public JLabel getIdCommandeAutoLabel() {
+        return idCommandeAutoLabel;
+    }
+
+    public void setIdCommandeAutoLabel(JLabel idCommandeAutoLabel) {
+        this.idCommandeAutoLabel = idCommandeAutoLabel;
+    }
+
+    public void setDescriptionLabel(JLabel descriptionLabel) {
+        this.descriptionLabel = descriptionLabel;
+    }
+
+    public JLabel getIdFournisseurLabel() {
+        return idFournisseurLabel;
+    }
+
+    public void setIdFournisseurLabel(JLabel idFournisseurLabel) {
+        this.idFournisseurLabel = idFournisseurLabel;
+    }
+
+    public JLabel getPoidsLabel() {
+        return poidsLabel;
+    }
+
+    public void setPoidsLabel(JLabel poidsLabel) {
+        this.poidsLabel = poidsLabel;
     }
 
     public void setTabbedPane1(JTabbedPane tabbedPane1) {
@@ -106,11 +221,11 @@ public class FenetreMain extends JFrame{
     }
 
     public JTextField getTextField1() {
-        return textField1;
+        return QuantiteCommande;
     }
 
     public void setTextField1(JTextField textField1) {
-        this.textField1 = textField1;
+        this.QuantiteCommande = textField1;
     }
 
     public JTable getTable1() {
@@ -186,11 +301,11 @@ public class FenetreMain extends JFrame{
     }
 
     public JLabel getProduitLabel() {
-        return produitLabel;
+        return libelle;
     }
 
     public void setProduitLabel(JLabel produitLabel) {
-        this.produitLabel = produitLabel;
+        this.libelle = produitLabel;
     }
 
     public JLabel getVilleLaboLabel() {

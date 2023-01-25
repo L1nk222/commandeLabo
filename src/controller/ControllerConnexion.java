@@ -1,9 +1,6 @@
 package controller;
 
-import DAO.DAOConnexion;
-import DAO.DAOLaboratoire;
-import DAO.DAOProduit;
-import DAO.DAOStock;
+import DAO.*;
 import entity.Laboratoire;
 import utils.Singleton;
 import views.FenetreMain;
@@ -27,8 +24,6 @@ public class ControllerConnexion {
     FenetreConnexion fenetreCnx;
     DAOConnexion daoc;
     DAOLaboratoire daol;
-
-
     FenetreMain fenetreMain;
 
     public ControllerConnexion(FenetreConnexion fenetreCnx, DAOConnexion daoc, DAOLaboratoire daol, FenetreMain fenetreMain) {
@@ -90,9 +85,12 @@ public class ControllerConnexion {
                 daol = new DAOLaboratoire(Singleton.getInstance().cnx);
                 DAOStock daos = new DAOStock(Singleton.getInstance().cnx);
                 DAOProduit daop = new DAOProduit(Singleton.getInstance().cnx);
+                DAOLigneCommande daolc = new DAOLigneCommande(Singleton.getInstance().cnx);
+                DAOCommande daoc = new DAOCommande(Singleton.getInstance().cnx);
                 FenetreMain f2 = new FenetreMain();
                 new ControllerHome(daol,f2,fenetreCnx,daol.findByName(""+fenetreCnx.getComboLabo().getSelectedItem())).init();
                 new ControllerStock(daos,daop,f2,daol.findByName(""+fenetreCnx.getComboLabo().getSelectedItem())).init();
+                new ControllerCommande(daolc,daoc,f2,daol.findByName(""+fenetreCnx.getComboLabo().getSelectedItem()));
                 //fenetreMain.setVisible(true);
             }
             //System.out.println(password);

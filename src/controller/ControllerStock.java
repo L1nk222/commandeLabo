@@ -79,7 +79,13 @@ public class ControllerStock {
             int row =fenetre.getTableStock().getSelectedRow();
             String produitSelect = (String) fenetre.getTableStock().getValueAt(row,1);
             Produit produit = daoProduit.find(produitSelect);
-            fenetre.getProduitLabel().setText(produit.getNom());
+            fenetre.getDescriptionTextPane().setSize(100,100);
+            fenetre.getDescriptionTextPane().setMaximumSize(new Dimension(100,100));
+            fenetre.getLibelle().setText("Libelle:"+produit.getNom());
+            fenetre.getMatriculeLabel().setText("Matricule:"+ produit.getMatricule());
+            fenetre.getDescriptionTextPane().setText("Description:"+produit.getDescription());
+            fenetre.getPoidsLabel().setText("Poids:"+produit.getPoids());
+            fenetre.getIdFournisseurLabel().setText("idFournisseur:"+produit.getIdFournisseur());
 
         }
         catch (SQLException e) {
@@ -117,10 +123,11 @@ public class ControllerStock {
         public void init() {
         try {
             stocks = daoStock.findAll();
+            /*
             for (Stock stock: stocks
                  ) {
                 System.out.println(stock.getMatricule());
-            }
+            }*/
             initTableStock();
             System.out.println("fin");
         } catch (SQLException e) {
