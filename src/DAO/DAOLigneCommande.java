@@ -24,11 +24,28 @@ public class DAOLigneCommande {
             commande = new LigneCommande();
             commande.setIdCommande(rs.getInt("idCommande"));
             commande.setMatriculProd(rs.getString("matriculeProd"));
-            commande.setQuantiteProd(rs.getInt("descriptionCommande"));
+            commande.setQuantiteProd(rs.getInt("quantiteProd"));
 
         }
-
         return commande;
+    }
+    public List<LigneCommande> findByAllId(int idCommande) throws SQLException {
+        List<LigneCommande> commandes = new ArrayList<>();
+        LigneCommande commande = null;
+        String SQL = "SELECT * FROM ligneCommande where idCommande=?";
+        PreparedStatement ps = cnx.prepareStatement(SQL);
+        ps.setInt(1, idCommande);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            commande = new LigneCommande();
+            commande.setIdCommande(rs.getInt("idCommande"));
+            commande.setMatriculProd(rs.getString("matriculeProd"));
+            commande.setQuantiteProd(rs.getInt("quantiteProd"));
+
+            commandes.add(commande);
+
+        }
+        return commandes;
     }
     public List<LigneCommande> findAll(int limit, int offset) throws SQLException{
         List<LigneCommande> commandes = new ArrayList<>();
@@ -41,7 +58,7 @@ public class DAOLigneCommande {
             LigneCommande commande = new LigneCommande();
             commande.setIdCommande(rs.getInt("idCommande"));
             commande.setMatriculProd(rs.getString("matriculeProd"));
-            commande.setQuantiteProd(rs.getInt("descriptionCommande"));
+            commande.setQuantiteProd(rs.getInt("quantiteProd"));
 
             commandes.add(commande);
 

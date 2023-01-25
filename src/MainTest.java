@@ -1,8 +1,8 @@
 import DAO.DAOCommande;
+import DAO.DAOConnexion;
+import DAO.DAOLaboratoire;
 import DAO.DAOProduit;
-import controller.ControllerHistorique;
-import controller.ControllerTest;
-import controller.ControlleurTable;
+import controller.*;
 import entity.Commande;
 import entity.Produit;
 import utils.Singleton;
@@ -10,6 +10,7 @@ import utils.Singleton;
 import java.sql.SQLException;
 import java.util.List;
 
+import views.FenetreConnexion;
 import views.FenetreMain;
 import views.FenetreTable;
 import views.FenetreTest;
@@ -34,12 +35,12 @@ public class MainTest {
         System.out.println("ça marche");
     }
     private static void AfficheFenetre(){
-        DAOCommande dao;
+        DAOCommande daoCommande;
         try {
             FenetreMain f = new FenetreMain();
             //f.setVisible(true);
-            dao = new DAOCommande(Singleton.getInstance().cnx);
-            new ControllerHistorique(f,dao).init();
+            daoCommande = new DAOCommande(Singleton.getInstance().cnx);
+            new ControllerHistorique(f,daoCommande).init();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -67,20 +68,33 @@ public class MainTest {
                 System.out.println(commande.getDateCommande());
                 System.out.println(commande.getIdLabo());
                 System.out.println(commande.getDateCommande());
-
-
             }
         }
         catch (SQLException e){
             e.printStackTrace();
         }
     }
-
+    public static void MainTest(){
+        DAOCommande daoC;
+        DAOLaboratoire daoL;
+        try{
+            daoC = new DAOCommande(Singleton.getInstance().cnx);
+            FenetreTable f = new FenetreTable();
+            new ControlleurTable(f,daoC).init();
+            //new ControllerStock(daos,daop,f2,daol.findByName(""+fenetreCnx.getComboLabo().getSelectedItem())).init();
+        }catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static void main(String[] args){
 
-
+        //MainTest();
         AfficheFenetre();
 
     }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 }
 

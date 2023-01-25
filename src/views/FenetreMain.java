@@ -39,6 +39,10 @@ public class FenetreMain extends JFrame{
     private JLabel produitLabel;
     private JButton rechercheButtonHisto;
     private JComboBox comboBoxHisto;
+    private JButton buttonResetHisto;
+    private JLabel JLabelidCommand;
+    private JTable tableListCommande;
+    private JScrollPane JScrollPaneListCommande;
 
     /////////////////////////////////////////////////////////////////////////////
     public  FenetreMain(){
@@ -267,5 +271,45 @@ public class FenetreMain extends JFrame{
 
     public void setRechercherButton(JButton rechercherButton) {
         this.rechercherButton = rechercherButton;
+    }
+
+    public JButton getRechercheButtonHisto() {
+        return rechercheButtonHisto;
+    }
+
+    public void setRechercheButtonHisto(JButton rechercheButtonHisto) {
+        this.rechercheButtonHisto = rechercheButtonHisto;
+    }
+
+    public JButton getButtonResetHisto() {
+        return buttonResetHisto;
+    }
+
+    public void setButtonResetHisto(JButton buttonResetHisto) {
+        this.buttonResetHisto = buttonResetHisto;
+    }
+
+    public JLabel getJLabelidCommand() {
+        return JLabelidCommand;
+    }
+
+    public void setJLabelidCommand(JLabel JLabelidCommand) {
+        this.JLabelidCommand = JLabelidCommand;
+    }
+
+    public JTable getTableListCommande() {
+        return tableListCommande;
+    }
+
+    public void setTableListCommande(JTable tableListCommande) {
+        this.tableListCommande = tableListCommande;
+    }
+
+    public JScrollPane getJScrollPaneListCommande() {
+        return JScrollPaneListCommande;
+    }
+
+    public void setJScrollPaneListCommande(JScrollPane JScrollPaneListCommande) {
+        this.JScrollPaneListCommande = JScrollPaneListCommande;
     }
 }
