@@ -15,7 +15,7 @@ public class ControlleurTable {
 
     List<Commande> commandeList;
 
-    DefaultTableHistorique mDTM;
+    ModelTableHistorique mDTM;
 
     public ControlleurTable(FenetreTable fenetreTable, DAOCommande daoCommande) {
         //super();
@@ -26,7 +26,7 @@ public class ControlleurTable {
         try {
             commandeList = daoCommande.findAll();
 
-            mDTM = new DefaultTableHistorique(commandeList);
+            mDTM = new ModelTableHistorique(commandeList);
             fenetreTable.getTable1().setModel(mDTM);
             fenetreTable.setVisible(true);
         } catch (SQLException e) {

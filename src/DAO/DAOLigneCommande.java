@@ -26,7 +26,7 @@ public class DAOLigneCommande {
             commande = new LigneCommande();
             commande.setIdCommande(rs.getInt("idCommande"));
             commande.setMatriculProd(rs.getString("matriculeProd"));
-            commande.setQuantiteProd(rs.getInt("descriptionCommande"));
+            commande.setQuantiteProd(rs.getInt("quantiteProd"));
 
         }
 
@@ -50,6 +50,24 @@ public class DAOLigneCommande {
     }
 
 
+    public List<LigneCommande> findByAllId(int idCommande) throws SQLException {
+        List<LigneCommande> commandes = new ArrayList<>();
+        LigneCommande commande = null;
+        String SQL = "SELECT * FROM ligneCommande where idCommande=?";
+        PreparedStatement ps = cnx.prepareStatement(SQL);
+        ps.setInt(1, idCommande);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            commande = new LigneCommande();
+            commande.setIdCommande(rs.getInt("idCommande"));
+            commande.setMatriculProd(rs.getString("matriculeProd"));
+            commande.setQuantiteProd(rs.getInt("quantiteProd"));
+
+            commandes.add(commande);
+
+        }
+        return commandes;
+    }
     public List<LigneCommande> findAll(int limit, int offset) throws SQLException{
         List<LigneCommande> commandes = new ArrayList<>();
         String SQL = "SELECT * FROM ligneCommande LIMIT ? OFFSET ?";
@@ -61,7 +79,7 @@ public class DAOLigneCommande {
             LigneCommande commande = new LigneCommande();
             commande.setIdCommande(rs.getInt("idCommande"));
             commande.setMatriculProd(rs.getString("matriculeProd"));
-            commande.setQuantiteProd(rs.getInt("descriptionCommande"));
+            commande.setQuantiteProd(rs.getInt("quantiteProd"));
 
             commandes.add(commande);
 
@@ -95,7 +113,7 @@ public class DAOLigneCommande {
 
     public void delete(LigneCommande c) throws SQLException{
         int IdCommande =  c.getIdCommande();
-        String SQL ="DELETE FROM ligneCommande WHERE idCommande =?";
+        String SQL ="DELETE FROM ligneCommande WHERE IdCommande =?";
         PreparedStatement ps = cnx.prepareStatement(SQL);
         ps.setInt(1,IdCommande);
         ps.executeQuery();

@@ -6,12 +6,12 @@ import javax.swing.table.DefaultTableModel;
 import java.util.HashSet;
 import java.util.List;
 
-public class DefaultTableHistorique extends DefaultTableModel {
+public class ModelTableHistorique extends DefaultTableModel {
     List<Commande> commandeList;
     private String[] columNames = {"idCommande","DateCommande","DescriptionCommande","EtatCommande"};
     HashSet<Commande> modified;
 
-    public DefaultTableHistorique(List<Commande>commandeList){
+    public ModelTableHistorique(List<Commande>commandeList){
         super();
         this.commandeList = commandeList;
         modified = new HashSet<Commande>();
@@ -42,7 +42,6 @@ public class DefaultTableHistorique extends DefaultTableModel {
     public String getColumnName(int column) {
         return columNames[column];
     }
-
 
     @Override
     public boolean isCellEditable(int row, int column) {
