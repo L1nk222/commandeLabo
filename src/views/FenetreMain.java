@@ -55,6 +55,9 @@ public class FenetreMain extends JFrame{
     private JLabel JLabelidCommand;
     private JTable tableListCommande;
     private JScrollPane JScrollPaneListCommande;
+    private JComboBox comboBoxEtatCommande;
+    private JButton buttonEtatCommande;
+    private JButton refrecheButton;
 
     /////////////////////////////////////////////////////////////////////////////
     public  FenetreMain(){
@@ -443,5 +446,29 @@ public class FenetreMain extends JFrame{
 
     public void setJScrollPaneListCommande(JScrollPane JScrollPaneListCommande) {
         this.JScrollPaneListCommande = JScrollPaneListCommande;
+    }
+
+    public JComboBox getComboBoxEtatCommande() {
+        return comboBoxEtatCommande;
+    }
+
+    public void setComboBoxEtatCommande(JComboBox comboBoxEtatCommande) {
+        this.comboBoxEtatCommande = comboBoxEtatCommande;
+    }
+
+    public JButton getButtonEtatCommande() {
+        return buttonEtatCommande;
+    }
+
+    public void setButtonEtatCommande(JButton buttonEtatCommande) {
+        this.buttonEtatCommande = buttonEtatCommande;
+    }
+
+    public JButton getRefrecheButton() {
+        return refrecheButton;
+    }
+
+    public void setRefrecheButton(JButton refrecheButton) {
+        this.refrecheButton = refrecheButton;
     }
 }

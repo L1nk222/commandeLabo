@@ -24,6 +24,9 @@ public class ControllerHistorique {
     List<LigneCommande> lesCommandes;
     ModelTableHistorique mDTM;
     ModelTableListCommande mDTM2;
+    String lastSearch;
+    String donnerSearch;
+    int produitSelect;
 
 
     public  ControllerHistorique(FenetreMain fenetreMain, DAOCommande daoCommande){
@@ -41,6 +44,18 @@ public class ControllerHistorique {
             @Override
             public void actionPerformed(ActionEvent e) {
                 findAll();
+            }
+        });
+        fenetreMain.getButtonEtatCommande().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                BouttonValidationChangementEtatCommande();
+            }
+        });
+        fenetreMain.getRefrecheButton().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Refreche();
             }
         });
         fenetreMain.getTableHistorique().addMouseListener(new MouseListener() {
@@ -75,31 +90,24 @@ public class ControllerHistorique {
 ////////////////////////////////////////////////////////////////////////////
 
     public void init(){
-        try {
-            commandeList = daoCommande.findAll(0,100);
-            mDTM = new ModelTableHistorique(commandeList);
-            fenetreMain.getTableHistorique().setModel(mDTM);
-            fenetreMain.setVisible(true);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        lastSearch = "all";
+        Refreche();
+        fenetreMain.setVisible(true);
+        fenetreMain.getComboBoxEtatCommande().setSelectedIndex(4);
     }
 
     public void SelectTable(){
         try{
-
             int row =fenetreMain.getTableHistorique().getSelectedRow();
-            System.out.println("1 :"+row);
-            int produitSelect = (int) fenetreMain.getTableHistorique().getValueAt(row,0);
-            System.out.println("2 :"+produitSelect);
+            produitSelect = (int) fenetreMain.getTableHistorique().getValueAt(row,0);
+            String etatProd = (String) fenetreMain.getTableHistorique().getValueAt(row,3);
             //////////////////////////////////////////////////////
-
             lesCommandes = daoLigneCommande.findByAllId(produitSelect);
-            System.out.println("3 :"+lesCommandes);
 
             mDTM2 = new ModelTableListCommande(lesCommandes);
             fenetreMain.getTableListCommande().setModel(mDTM2);
 
+            selectBoxEtat(etatProd);
 
             fenetreMain.getJLabelidCommand().setText(String.valueOf(produitSelect));
             //  fenetreMain.getProduitLabel().setText(commande.getNom());
@@ -110,61 +118,45 @@ public class ControllerHistorique {
             e.printStackTrace();
         }
     }
+    private void selectBoxEtat(String EtatCommande){
+        if (EtatCommande.equals("En cours") ) {
+            fenetreMain.getComboBoxEtatCommande().setSelectedIndex(0);
+        } else if (EtatCommande.equals("Terminer")) {
+            fenetreMain.getComboBoxEtatCommande().setSelectedIndex(1);
+        } else if (EtatCommande.equals("Abandonner")) {
+            fenetreMain.getComboBoxEtatCommande().setSelectedIndex(2);            
+        } else if (EtatCommande.equals("En pause")) {
+            fenetreMain.getComboBoxEtatCommande().setSelectedIndex(3);
+        }else{
+            fenetreMain.getComboBoxEtatCommande().setSelectedIndex(4);
+        }
+    }
     private void recherche(){
         String box = (String) fenetreMain.getComboBox1().getSelectedItem();
         String r = fenetreMain.getRechercheHistorique().getText();
-        System.out.println("|"+r+"| Truc entré par utilisateur");
-        autoR(r);
-
-        //intR();
-    }
-    private void autoR(String r){
-        try {
-            commandeList = daoCommande.findHitorique(r,0,100);
-            System.out.println(commandeList);
-            mDTM = new ModelTableHistorique(commandeList);
-            fenetreMain.getTableHistorique().setModel(mDTM);
-        } catch (SQLException e1) {
-            throw new RuntimeException(e1);
+        if (box.equals("Date")){
+            dateR(r);
+        } else if (box.equals("Id")) {
+            idR(r);
+        } else{
+            findAll();
         }
+    }
+    private void idR(String id){
+        donnerSearch = id;
+        lastSearch = "idR";
+        Refreche();
     }
 
-    private void intR(){
-        try {
-            commandeList = daoCommande.findAll(0,100);
-            mDTM = new ModelTableHistorique(commandeList);
-            fenetreMain.getTableHistorique().setModel(mDTM);
-        } catch (SQLException e1) {
-            throw new RuntimeException(e1);
-        }
+    private void dateR(String r){
+        lastSearch = "DateR";
+        donnerSearch= r;
+        Refreche();
     }
 
-    private void dateR(){
-        try {
-            commandeList = daoCommande.findAll(0,100);
-            mDTM = new ModelTableHistorique(commandeList);
-            fenetreMain.getTableHistorique().setModel(mDTM);
-        } catch (SQLException e1) {
-            throw new RuntimeException(e1);
-        }
-    }
-    private void etatR(){
-        try {
-            commandeList = daoCommande.findAll(0,100);
-            mDTM = new ModelTableHistorique(commandeList);
-            fenetreMain.getTableHistorique().setModel(mDTM);
-        } catch (SQLException e1) {
-            throw new RuntimeException(e1);
-        }
-    }
     private void findAll(){
-        try {
-            commandeList = daoCommande.findAll(0,100);
-            mDTM = new ModelTableHistorique(commandeList);
-            fenetreMain.getTableHistorique().setModel(mDTM);
-        } catch (SQLException e1) {
-            throw new RuntimeException(e1);
-        }
+        lastSearch = "all";
+        Refreche();
     }
 //////////////////////////////////////////////////////////////////////////
     private void daoLigneC(){
@@ -175,5 +167,42 @@ public class ControllerHistorique {
         }
     }
 
+    private void BouttonValidationChangementEtatCommande()  {
+        String boxEtat = (String) fenetreMain.getComboBoxEtatCommande().getSelectedItem();
+        // produitSelect
+        System.out.println("boxEtat :"+boxEtat);
+        if (boxEtat.equals("Null")){
+            boxEtat = null;
+        }
+        try {
+            System.out.println("id Produit = "+produitSelect+"  Etat produit = "+boxEtat);
+            daoCommande.updateEtat(boxEtat,produitSelect);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("Commande effectuer");
+        Refreche();
+
+
+    }
+    private void Refreche(){
+        try {
+            System.out.println("&& "+ lastSearch);
+            /////////////////////////////////
+            if (lastSearch.equals("all")){
+                commandeList = daoCommande.findAll(0,100);
+            } else if (lastSearch.equals("DateR")) {
+                commandeList = daoCommande.findHitorique(donnerSearch,0,100);
+            } else if (lastSearch.equals("idR")) {
+                int id = Integer.parseInt(donnerSearch);
+                commandeList = daoCommande.findAllById(id);
+            }
+            /////////////////////////////////
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        mDTM = new ModelTableHistorique(commandeList);
+        fenetreMain.getTableHistorique().setModel(mDTM);
+    }
 
 }

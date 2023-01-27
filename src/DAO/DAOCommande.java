@@ -53,6 +53,27 @@ public class DAOCommande {
 
         return commande;
     }
+    public List<Commande> findAllById(int id) throws SQLException{
+        List<Commande> commandes = new ArrayList<>();
+        String SQL = "SELECT * FROM commande where idCommande=? ";
+        PreparedStatement ps = cnx.prepareStatement(SQL);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()){
+            Commande commande = new Commande();
+            commande.setEtatCommande(rs.getString("etatCommande"));
+            commande.setDateCommande(rs.getString("dateCommande"));
+            commande.setDescriptionCommande(rs.getString("descriptionCommande"));
+            commande.setIdCommande(rs.getInt("idCommande"));
+            commande.setIdLabo(rs.getInt("idLabo"));
+
+
+            commandes.add(commande);
+
+        }
+        return commandes;
+    }
     public List<Commande> findAll(int limit, int offset) throws SQLException{
         List<Commande> commandes = new ArrayList<>();
         String SQL = "SELECT * FROM commande ORDER BY dateCommande DESC LIMIT ? OFFSET ?";
@@ -81,17 +102,14 @@ public class DAOCommande {
     public List<Commande> findHitorique(String recheche, int limit, int offset) throws SQLException{
         List<Commande> commandes = new ArrayList<>();
         //recheche = "%"+recheche+"%";
-        System.out.println("DAO var Recherche : "+recheche);
         String SQL = "SELECT * FROM commande where dateCommande = '%'+?+'%' ORDER BY dateCommande DESC"; //ORDER BY dateCommande DESC
         PreparedStatement ps = cnx.prepareStatement(SQL);
         ps.setString(1,recheche);
         //ps.setInt(3, offset);
         //ps.setInt(2, limit);
-        System.out.println("1 "+ps);
         ResultSet rs = ps.executeQuery();
 
-        System.out.println(rs);
-        System.out.println(rs.next());
+
         while (rs.next()) {
 
             Commande commande = new Commande();
@@ -101,11 +119,8 @@ public class DAOCommande {
             commande.setIdCommande(rs.getInt("idCommande"));
             commande.setIdLabo(rs.getInt("idLabo"));
 
-            System.out.println("2");
             commandes.add(commande);
         }
-        System.out.println("3");
-        System.out.println("commandes :" +commandes);
         return commandes;
 
     }
@@ -136,6 +151,17 @@ public class DAOCommande {
         ps.setInt(5, c.getIdLabo());
         ps.executeQuery();
 
+    }
+    public void updateEtat(String etat, int id) throws SQLException {
+        System.out.println(1);
+        String SQL = "UPDATE commande SET etatCommande=? where idCommande=? ;";
+        PreparedStatement ps = cnx.prepareStatement(SQL);
+        System.out.println(2);
+        ps.setString(1,etat);
+        ps.setInt(2, id);
+        System.out.println(3);
+        ps.executeQuery();
+        System.out.println(4);
     }
 
     public void delete(Commande c) throws SQLException{
