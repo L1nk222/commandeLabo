@@ -76,7 +76,7 @@ public class ControllerHistorique {
 
     public void init(){
         try {
-            commandeList = daoCommande.findAll(0,100);
+            commandeList = daoCommande.findAll(0,2000);
             mDTM = new ModelTableHistorique(commandeList);
             fenetreMain.getTableHistorique().setModel(mDTM);
             fenetreMain.setVisible(true);
