@@ -43,9 +43,7 @@ public class DAOLigneCommande {
             commande.setIdCommande(rs.getInt("idCommande"));
             commande.setMatriculProd(rs.getString("matriculeProd"));
             commande.setQuantiteProd(rs.getInt("quantiteProd"));
-
         }
-
         return commande;
     }
 
@@ -112,10 +110,10 @@ public class DAOLigneCommande {
     }
 
     public void delete(LigneCommande c) throws SQLException{
-        int IdCommande =  c.getIdCommande();
-        String SQL ="DELETE FROM ligneCommande WHERE IdCommande =?";
+        String matriculProd =  c.getMatriculProd();
+        String SQL ="DELETE FROM ligneCommande WHERE matriculeProd =?";
         PreparedStatement ps = cnx.prepareStatement(SQL);
-        ps.setInt(1,IdCommande);
+        ps.setString(1,matriculProd);
         ps.executeQuery();
     }
 

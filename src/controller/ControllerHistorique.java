@@ -124,7 +124,7 @@ public class ControllerHistorique {
         } else if (EtatCommande.equals("Terminer")) {
             fenetreMain.getComboBoxEtatCommande().setSelectedIndex(1);
         } else if (EtatCommande.equals("Abandonner")) {
-            fenetreMain.getComboBoxEtatCommande().setSelectedIndex(2);            
+            fenetreMain.getComboBoxEtatCommande().setSelectedIndex(2);
         } else if (EtatCommande.equals("En pause")) {
             fenetreMain.getComboBoxEtatCommande().setSelectedIndex(3);
         }else{
@@ -190,7 +190,7 @@ public class ControllerHistorique {
             System.out.println("&& "+ lastSearch);
             /////////////////////////////////
             if (lastSearch.equals("all")){
-                commandeList = daoCommande.findAll(0,100);
+                commandeList = daoCommande.findAll(0,2000);
             } else if (lastSearch.equals("DateR")) {
                 commandeList = daoCommande.findHitorique(donnerSearch,0,100);
             } else if (lastSearch.equals("idR")) {

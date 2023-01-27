@@ -91,6 +91,7 @@ public class ControllerConnexion {
                 new ControllerHome(daol,f2,fenetreCnx,daol.findByName(""+fenetreCnx.getComboLabo().getSelectedItem())).init();
                 new ControllerStock(daos,daop,f2,daol.findByName(""+fenetreCnx.getComboLabo().getSelectedItem())).init();
                 new ControllerCommande(daolc,daoc,f2,daol.findByName(""+fenetreCnx.getComboLabo().getSelectedItem())).init();
+                new ControllerHistorique(f2,daoc).init();
                 //fenetreMain.setVisible(true);
             }
             //System.out.println(password);
