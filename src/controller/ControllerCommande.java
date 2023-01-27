@@ -49,13 +49,14 @@ public class ControllerCommande {
         List<LigneCommande> ligneCommandes = null;
         try {
             int row =fenetreMain.getTableLigneCommande().getSelectedRow();
-            String LigneSelect = (String) fenetreMain.getTableLigneCommande().getValueAt(row,1);
-            LigneCommande ligneCommande = daoLigneCommande.findByMatricule(LigneSelect);
+            String matriculeSelect = (String) fenetreMain.getTableLigneCommande().getValueAt(row,2);
+            LigneCommande ligneCommande = daoLigneCommande.findByMatricule(matriculeSelect);
+            System.out.println(ligneCommande.getNomProd());
             daoLigneCommande.delete(ligneCommande);
-            /*
+
             ligneCommandes = daoLigneCommande.findLigneByCommande(laboratoire, Integer.parseInt(fenetreMain.getIdLaboratoireLabel().getText()));
             modelTable = new ModelTableCommande(ligneCommandes);
-            fenetreMain.getTableLigneCommande().setModel(modelTable);*/
+            fenetreMain.getTableLigneCommande().setModel(modelTable);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
