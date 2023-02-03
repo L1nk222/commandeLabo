@@ -7,7 +7,7 @@ import views.FenetreTable;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ControlleurTable {
+public class Null_ControlleurTable {
 
     FenetreTable fenetreTable;
 
@@ -17,7 +17,7 @@ public class ControlleurTable {
 
     ModelTableHistorique mDTM;
 
-    public ControlleurTable(FenetreTable fenetreTable, DAOCommande daoCommande) {
+    public Null_ControlleurTable(FenetreTable fenetreTable, DAOCommande daoCommande) {
         //super();
         this.fenetreTable = fenetreTable;
         this.daoCommande = daoCommande;

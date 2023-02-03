@@ -5,10 +5,10 @@ import views.FenetreTest;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ControllerTest {
+public class Null_ControllerTest {
 
     FenetreTest fenetre;
-    public ControllerTest(FenetreTest fenetre) {
+    public Null_ControllerTest(FenetreTest fenetre) {
         this.fenetre= fenetre;
 
         fenetre.getStockButton().addActionListener(new ActionListener() {
