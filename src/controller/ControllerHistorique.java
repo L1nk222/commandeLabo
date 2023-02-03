@@ -3,6 +3,7 @@ package controller;
 import DAO.DAOCommande;
 import DAO.DAOLigneCommande;
 import entity.Commande;
+import entity.Laboratoire;
 import entity.LigneCommande;
 import utils.Singleton;
 import views.FenetreMain;
@@ -25,14 +26,16 @@ public class ControllerHistorique {
     ModelTableHistorique mDTM;
     ModelTableListCommande mDTM2;
     String lastSearch;
-    String donnerSearch;
+    String elementSearch;
     int produitSelect;
+    Laboratoire laboratoire;
 
 
-    public  ControllerHistorique(FenetreMain fenetreMain, DAOCommande daoCommande){
+    public  ControllerHistorique(FenetreMain fenetreMain, DAOCommande daoCommande, Laboratoire laboratoire){
         super();
         this.fenetreMain = fenetreMain;
         this.daoCommande = daoCommande;
+        this.laboratoire = laboratoire;
         daoLigneC();
         fenetreMain.getRechercheButton().addActionListener(new ActionListener() {
             @Override
@@ -55,7 +58,7 @@ public class ControllerHistorique {
         fenetreMain.getRefrecheButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Refreche();
+                Refresh();
             }
         });
         fenetreMain.getTableHistorique().addMouseListener(new MouseListener() {
@@ -91,8 +94,8 @@ public class ControllerHistorique {
 
     public void init(){
         lastSearch = "all";
-        Refreche();
-        fenetreMain.setVisible(true);
+        Refresh();
+        //fenetreMain.setVisible(true);
         fenetreMain.getComboBoxEtatCommande().setSelectedIndex(4);
     }
 
@@ -143,20 +146,20 @@ public class ControllerHistorique {
         }
     }
     private void idR(String id){
-        donnerSearch = id;
+        elementSearch = id;
         lastSearch = "idR";
-        Refreche();
+        Refresh();
     }
 
     private void dateR(String r){
         lastSearch = "DateR";
-        donnerSearch= r;
-        Refreche();
+        elementSearch= r;
+        Refresh();
     }
 
     private void findAll(){
         lastSearch = "all";
-        Refreche();
+        Refresh();
     }
 //////////////////////////////////////////////////////////////////////////
     private void daoLigneC(){
@@ -181,20 +184,21 @@ public class ControllerHistorique {
             throw new RuntimeException(e);
         }
         System.out.println("Commande effectuer");
-        Refreche();
+        Refresh();
 
 
     }
-    private void Refreche(){
+
+    private void Refresh(){
         try {
             System.out.println("&& "+ lastSearch);
             /////////////////////////////////
             if (lastSearch.equals("all")){
-                commandeList = daoCommande.findAll(0,2000);
+                commandeList = daoCommande.findAll(laboratoire);
             } else if (lastSearch.equals("DateR")) {
-                commandeList = daoCommande.findHitorique(donnerSearch,0,100);
+                commandeList = daoCommande.findHistorique(elementSearch,laboratoire);
             } else if (lastSearch.equals("idR")) {
-                int id = Integer.parseInt(donnerSearch);
+                int id = Integer.parseInt(elementSearch);
                 commandeList = daoCommande.findAllById(id);
             }
             /////////////////////////////////

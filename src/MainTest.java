@@ -14,6 +14,7 @@ import views.FenetreConnexion;
 import views.FenetreMain;
 import views.FenetreTable;
 import views.FenetreTest;
+/*
 public class MainTest {
     public static void TestFindAllCommande(){
         try {
@@ -40,7 +41,7 @@ public class MainTest {
             FenetreMain f = new FenetreMain();
             //f.setVisible(true);
             daoCommande = new DAOCommande(Singleton.getInstance().cnx);
-            new ControllerHistorique(f,daoCommande).init();
+            //new ControllerHistorique(f,daoCommande).init();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -74,6 +75,7 @@ public class MainTest {
             e.printStackTrace();
         }
     }
+    /*
     public static void MainTest(){
         DAOCommande daoC;
         DAOLaboratoire daoL;
@@ -97,4 +99,4 @@ public class MainTest {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
-
+*/

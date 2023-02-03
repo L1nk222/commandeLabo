@@ -51,7 +51,7 @@ public class DAOLigneCommande {
     public List<LigneCommande> findByAllId(int idCommande) throws SQLException {
         List<LigneCommande> commandes = new ArrayList<>();
         LigneCommande commande = null;
-        String SQL = "SELECT * FROM ligneCommande where idCommande=?";
+        String SQL = "SELECT * FROM ligneCommande  where idCommande=?   ";
         PreparedStatement ps = cnx.prepareStatement(SQL);
         ps.setInt(1, idCommande);
         ResultSet rs = ps.executeQuery();

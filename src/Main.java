@@ -60,7 +60,7 @@ public class Main {
             e.printStackTrace();
         }
     }
-    public static void TestFindAllCommande(){
+    /*public static void TestFindAllCommande(){
         try {
             java.sql.Connection cnx = Singleton.getInstance().cnx;
             DAOCommande DAO = new DAOCommande(cnx);
@@ -72,7 +72,7 @@ public class Main {
         catch (SQLException e){
             e.printStackTrace();
         }
-    }
+    }*/
     public static void  aled(){
         System.out.println("STP MAAAAAAAARCHE!");
     }

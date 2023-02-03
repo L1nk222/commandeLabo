@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entity.Commande;
+import entity.Laboratoire;
 
 public class DAOCommande {
     private Connection cnx;
@@ -74,12 +75,13 @@ public class DAOCommande {
         }
         return commandes;
     }
-    public List<Commande> findAll(int limit, int offset) throws SQLException{
+    public List<Commande> findAll(int limit, int offset, Laboratoire laboratoire) throws SQLException{
         List<Commande> commandes = new ArrayList<>();
-        String SQL = "SELECT * FROM commande LIMIT ? OFFSET ?";
+        String SQL = "SELECT * FROM commande where idLabo=? LIMIT ? OFFSET ?";
         PreparedStatement ps = cnx.prepareStatement(SQL);
-        ps.setInt(1, offset);
-        ps.setInt(2, limit);
+        ps.setInt(1, laboratoire.getIdLabo());
+        ps.setInt(2, offset);
+        ps.setInt(3, limit);
         ResultSet rs = ps.executeQuery();
 
         while (rs.next()){
@@ -120,15 +122,16 @@ public class DAOCommande {
         }
         return commandes;
     }
-    public List<Commande> findAll()throws SQLException{
-        return findAll(0,5000);
+    public List<Commande> findAll(Laboratoire laboratoire)throws SQLException{
+        return findAll(0,5000, laboratoire);
     }
-    public List<Commande> findHitorique(String recheche, int limit, int offset) throws SQLException{
+    public List<Commande> findHistorique(String recheche, int limit, int offset, Laboratoire laboratoire) throws SQLException{
         List<Commande> commandes = new ArrayList<>();
         //recheche = "%"+recheche+"%";
-        String SQL = "SELECT * FROM commande where dateCommande = '%'+?+'%' ORDER BY dateCommande DESC"; //ORDER BY dateCommande DESC
+        String SQL = "SELECT * FROM commande where idLabo=? and dateCommande = '%'+?+'%' ORDER BY dateCommande DESC"; //ORDER BY dateCommande DESC
         PreparedStatement ps = cnx.prepareStatement(SQL);
-        ps.setString(1,recheche);
+        ps.setInt(1,laboratoire.getIdLabo());
+        ps.setString(2,recheche);
         //ps.setInt(3, offset);
         //ps.setInt(2, limit);
         ResultSet rs = ps.executeQuery();
@@ -148,8 +151,8 @@ public class DAOCommande {
         return commandes;
 
     }
-    public List<Commande> findHitorique(String recheche) throws SQLException {
-        return findHitorique(recheche, 0,400);
+    public List<Commande> findHistorique(String recheche, Laboratoire laboratoire) throws SQLException {
+        return findHistorique(recheche, 0,1000, laboratoire);
     }
 
 
