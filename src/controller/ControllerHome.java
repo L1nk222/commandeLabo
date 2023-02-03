@@ -7,6 +7,11 @@ import views.FenetreConnexion;
 import views.FenetreMain;
 
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -28,21 +33,40 @@ public class ControllerHome {
 
     }
     private void fillData(){
-        fenetreMain.getNomLabo().setText("Laboratoire :"+laboratoire.getNom());
-        fenetreMain.getIdStockLabel().setText("Id stock :"+laboratoire.getIdStock());
-        fenetreMain.getEmailLabel().setText("Email :"+laboratoire.getEmail());
-        fenetreMain.getIdLaboLabel().setText("Id laboratoire :"+laboratoire.getIdLabo());
-        fenetreMain.getAdresseLabel().setText("Adresse :"+laboratoire.getAdresse());
-        fenetreMain.getNumPhoneLabel().setText("Numéro téléphone :"+laboratoire.getNumTelephone());
-        fenetreMain.getVilleLaboLabel().setText("Ville :"+laboratoire.getVille());
+        fenetreMain.getNomLabo().setText(laboratoire.getNom());
+        fenetreMain.getIdStockLabel().setText(""+laboratoire.getIdStock());
+        fenetreMain.getEmailLabel().setText(laboratoire.getEmail());
+        fenetreMain.getIdLaboLabel().setText(""+laboratoire.getIdLabo());
+        fenetreMain.getAdresseLabel().setText(laboratoire.getAdresse());
+        fenetreMain.getNumPhoneLabel().setText(laboratoire.getNumTelephone());
+        fenetreMain.getVilleLaboLabel().setText(laboratoire.getVille());
     }
 
 
+        fenetreMain.setIconImage(bufferedImage);
+    }
     public void init(){
         fillData();
+        /*
+        try {
+            image();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        ImageIcon icon = new ImageIcon("Steins_Gate_Labo.jpg");
+        JLabel label = new JLabel(icon);
+
+        fenetreMain.add(label);
+        fenetreMain.pack();*/
         fenetreMain.setVisible(true);
 
+
     }
     }
 
+    private void image() throws IOException {
+        File file = new File("..\\..\\img\\Steins_Gate_Labo.jpg");
+        BufferedImage bufferedImage = ImageIO.read(file);
 
