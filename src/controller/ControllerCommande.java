@@ -9,9 +9,8 @@ import entity.LigneCommande;
 import entity.Produit;
 import utils.Singleton;
 import views.FenetreMain;
-
-import javax.swing.*;
-import java.awt.*;
+import java.time.LocalDate;
+import java.io.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -56,59 +55,51 @@ public class ControllerCommande {
     }
     public void doSupprLigne(){
 
-        //try {
             int row =fenetreMain.getTableLigneCommande().getSelectedRow();
-            /*String matriculeSelect = (String) fenetreMain.getTableLigneCommande().getValueAt(row,2);
-            LigneCommande ligneCommande =fenetreMain.getTableLigneCommande().get;
-            System.out.println(ligneCommande.getNomProd());*/
-            ligneCommandes.remove(row);
-            /*daoLigneCommande.delete(ligneCommande);
 
-            ligneCommandes = daoLigneCommande.findLigneByCommande(laboratoire, Integer.parseInt(fenetreMain.getIdLaboratoireLabel().getText()));
-            */
+            ligneCommandes.remove(row);
 
             modelTable = new ModelTableCommande(ligneCommandes);
             fenetreMain.getTableLigneCommande().setModel(modelTable);
-/*
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }*/
+
 
     }
     public void doCommander(){
 
         try {
-            daoCommande.save(new Commande(Integer.parseInt(fenetreMain.getIdCommandeAutoLabel().getText()),null,
-                    null,Integer.parseInt(fenetreMain.getIdLaboratoireLabel().getText())));
+            daoCommande.save(new Commande(Integer.parseInt(fenetreMain.getIdCommandeAutoLabel().getText()),""+LocalDate.now(),
+                    fenetreMain.getDescriptionTextAreaCommande().getText(),Integer.parseInt(fenetreMain.getIdLaboratoireLabel().getText())));
 
             for (LigneCommande lignecommande:ligneCommandes
                  ) {
                 daoLigneCommande.save(lignecommande);
             }
+
+            ligneCommandes.clear();
+            init();
+
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     public void doAddLigne(){
-
+        int quantite=0;
+            if (fenetreMain.getQuantiteCommande().getText().matches("[0-9]{0,10}")) {
+                 quantite =Integer.parseInt(fenetreMain.getQuantiteCommande().getText());
+            }
+            else { quantite = 10;}
             int idcommande = Integer.parseInt(fenetreMain.getIdCommandeAutoLabel().getText());
+            //TODO verifier qu'il n'y est pas deux fois le meme produit
             String produit = (String) fenetreMain.getProduitCommande().getSelectedItem();
-            int quantite = Integer.parseInt(fenetreMain.getQuantiteCommande().getText());
+
             String[] matriculeProd = produit.split(":");
 
-            LigneCommande ligneCommande = new LigneCommande(idcommande,matriculeProd[0],matriculeProd[1],quantite);
-            ligneCommandes.add(ligneCommande);
-            /*
-        try {
-            if (daoCommande.find(idcommande)==null){
-            daoCommande.save(new Commande(idcommande,null,
-                    null,Integer.parseInt(fenetreMain.getIdLaboratoireLabel().getText())));}
-            daoLigneCommande.save(new LigneCommande(idcommande,matriculeProd[0],matriculeProd[1],quantite));
-            ligneCommandes = daoLigneCommande.findLigneByCommande(laboratoire,idcommande);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }*/
+
+        LigneCommande ligneCommande = new LigneCommande(idcommande,matriculeProd[0],matriculeProd[1],quantite);
+        ligneCommandes.add(ligneCommande);
+
         modelTable = new ModelTableCommande(ligneCommandes);
         fenetreMain.getTableLigneCommande().setModel(modelTable);
 
@@ -125,9 +116,11 @@ public class ControllerCommande {
                 fenetreMain.getProduitCommande().addItem(produit.getMatricule()+": "+produit.getNom());
             }
             List<Commande> commandes = daoCommande.findAll();
+            //System.out.println("id de la derniere commande:"+commandes.get(commandes.size()-1).getIdCommande());
             fenetreMain.getIdCommandeAutoLabel().setText(String.valueOf(commandes.get(commandes.size()-1).getIdCommande()+1));
+            //System.out.println(commandes.get(commandes.size()-1).getIdCommande());
             fenetreMain.getIdLaboratoireLabel().setText(String.valueOf(laboratoire.getIdLabo()));
-            LigneCommande ligneCommande = new LigneCommande(1,"vide","vide",1);
+            LigneCommande ligneCommande = new LigneCommande(0,"vide","vide",0);
             ligneCommandes.add(ligneCommande);
             modelTable = new ModelTableCommande(ligneCommandes);
             fenetreMain.getTableLigneCommande().setModel(modelTable);

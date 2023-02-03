@@ -76,6 +76,30 @@ public class DAOCommande {
     }
     public List<Commande> findAll(int limit, int offset) throws SQLException{
         List<Commande> commandes = new ArrayList<>();
+        String SQL = "SELECT * FROM commande LIMIT ? OFFSET ?";
+        PreparedStatement ps = cnx.prepareStatement(SQL);
+        ps.setInt(1, offset);
+        ps.setInt(2, limit);
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()){
+            Commande commande = new Commande();
+            commande.setEtatCommande(rs.getString("etatCommande"));
+            commande.setDateCommande(rs.getString("dateCommande"));
+            commande.setDescriptionCommande(rs.getString("descriptionCommande"));
+            commande.setIdCommande(rs.getInt("idCommande"));
+            commande.setIdLabo(rs.getInt("idLabo"));
+
+
+            commandes.add(commande);
+
+        }
+        return commandes;
+    }
+
+
+    public List<Commande> findAllOrderByDate(int limit, int offset) throws SQLException{
+        List<Commande> commandes = new ArrayList<>();
         String SQL = "SELECT * FROM commande ORDER BY dateCommande DESC LIMIT ? OFFSET ?";
         PreparedStatement ps = cnx.prepareStatement(SQL);
         ps.setInt(1, offset);
@@ -97,7 +121,7 @@ public class DAOCommande {
         return commandes;
     }
     public List<Commande> findAll()throws SQLException{
-        return findAll(0,2000);
+        return findAll(0,5000);
     }
     public List<Commande> findHitorique(String recheche, int limit, int offset) throws SQLException{
         List<Commande> commandes = new ArrayList<>();

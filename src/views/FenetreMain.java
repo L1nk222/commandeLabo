@@ -50,7 +50,7 @@ public class FenetreMain extends JFrame{
     private JLabel idCommandeAutoLabel;
     private JPanel commandePanel;
     private JLabel idLaboratoireLabel;
-    private JTextArea descriptionTextArea;
+    private JTextArea descriptionTextAreaCommande;
     private JButton buttonResetHisto;
     private JLabel JLabelidCommand;
     private JTable tableListCommande;
@@ -93,11 +93,11 @@ public class FenetreMain extends JFrame{
     }
 
     public JTextArea getDescriptionTextArea() {
-        return descriptionTextArea;
+        return descriptionTextAreaCommande;
     }
 
     public void setDescriptionTextArea(JTextArea descriptionTextArea) {
-        this.descriptionTextArea = descriptionTextArea;
+        this.descriptionTextAreaCommande = descriptionTextArea;
     }
 
     public JLabel getLibelle() {
@@ -386,6 +386,14 @@ public class FenetreMain extends JFrame{
 
     public JButton getRechercherButton() {
         return rechercherButton;
+    }
+
+    public JTextArea getDescriptionTextAreaCommande() {
+        return descriptionTextAreaCommande;
+    }
+
+    public void setDescriptionTextAreaCommande(JTextArea descriptionTextAreaCommande) {
+        this.descriptionTextAreaCommande = descriptionTextAreaCommande;
     }
 
     public void setRechercherButton(JButton rechercherButton) {
