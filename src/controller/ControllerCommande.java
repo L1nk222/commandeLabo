@@ -10,7 +10,6 @@ import entity.Produit;
 import utils.Singleton;
 import views.FenetreMain;
 import java.time.LocalDate;
-import java.io.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -18,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerCommande {
-
     DAOLigneCommande daoLigneCommande;
     DAOCommande daoCommande;
     FenetreMain fenetreMain;
@@ -86,23 +84,39 @@ public class ControllerCommande {
 
     public void doAddLigne(){
         int quantite=0;
-            if (fenetreMain.getQuantiteCommande().getText().matches("[0-9]{0,10}")) {
+
+
+            if (fenetreMain.getQuantiteCommande().getText().matches("[0-9]{1,10}")) {
                  quantite =Integer.parseInt(fenetreMain.getQuantiteCommande().getText());
             }
-            else { quantite = 10;}
-            int idcommande = Integer.parseInt(fenetreMain.getIdCommandeAutoLabel().getText());
-            //TODO verifier qu'il n'y est pas deux fois le meme produit
-            String produit = (String) fenetreMain.getProduitCommande().getSelectedItem();
+            else { quantite = 100;}
 
+            int idCommande = Integer.parseInt(fenetreMain.getIdCommandeAutoLabel().getText());
+            String produit = (String) fenetreMain.getProduitCommande().getSelectedItem();
             String[] matriculeProd = produit.split(":");
 
+            System.out.println(new LigneCommande(idCommande,matriculeProd[0],matriculeProd[1],quantite));
+            System.out.println(ligneCommandes);
+            LigneCommande ligneCommande = new LigneCommande(idCommande, matriculeProd[0], matriculeProd[1], quantite);
 
-        LigneCommande ligneCommande = new LigneCommande(idcommande,matriculeProd[0],matriculeProd[1],quantite);
-        ligneCommandes.add(ligneCommande);
+            List<String>MatriculeList = new ArrayList<>();
+            for (LigneCommande ligneCommande1:ligneCommandes)
+            {
+            MatriculeList.add(ligneCommande1.getMatriculProd());
+            }
 
-        modelTable = new ModelTableCommande(ligneCommandes);
-        fenetreMain.getTableLigneCommande().setModel(modelTable);
+            if(MatriculeList.contains(ligneCommande.getMatriculProd())){
+                //TODO afficher popup
+                System.out.println("element already exist ");
+            }
+            else {
+                //System.out.println("l'élément n'existe pas (normalement)");
 
+                ligneCommandes.add(ligneCommande);
+
+                modelTable = new ModelTableCommande(ligneCommandes);
+                fenetreMain.getTableLigneCommande().setModel(modelTable);
+            }
 
     };
 
@@ -115,7 +129,7 @@ public class ControllerCommande {
             for (Produit produit : produits) {
                 fenetreMain.getProduitCommande().addItem(produit.getMatricule()+": "+produit.getNom());
             }
-            List<Commande> commandes = daoCommande.findAll();
+            List<Commande> commandes = daoCommande.findAll(laboratoire);
             //System.out.println("id de la derniere commande:"+commandes.get(commandes.size()-1).getIdCommande());
             fenetreMain.getIdCommandeAutoLabel().setText(String.valueOf(commandes.get(commandes.size()-1).getIdCommande()+1));
             //System.out.println(commandes.get(commandes.size()-1).getIdCommande());

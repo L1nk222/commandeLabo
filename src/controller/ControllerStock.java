@@ -45,7 +45,7 @@ public class ControllerStock {
             @Override
             public void mouseClicked(MouseEvent e) {
                 doSelect();
-                System.out.println("c cliqued");
+                //System.out.println("c cliqued");
 
             }
 

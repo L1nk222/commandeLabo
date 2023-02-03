@@ -22,8 +22,10 @@ public class Null_ControlleurTable {
         this.fenetreTable = fenetreTable;
         this.daoCommande = daoCommande;
     }
+    /*
     public void init(){
         try {
+
             commandeList = daoCommande.findAll();
 
             mDTM = new ModelTableHistorique(commandeList);
@@ -33,5 +35,5 @@ public class Null_ControlleurTable {
             throw new RuntimeException(e);
         }
     }
-
+*/
 }
