@@ -82,7 +82,7 @@ public class DAOStock {
     }
     public List<Stock> findStockBySearch(Laboratoire laboratoire, String value) throws SQLException{
         List<Stock> stocks = new ArrayList<>();
-         value = "%"+value+"%";
+        value = "%"+value+"%";
         String SQL = "SELECT * FROM stock,laboratoire,produit where nom= ? AND (stock.matricule LIKE ? OR produit.libelle LIKE ?) AND stock.idStock=laboratoire.idStock " +
                 " AND stock.matricule=produit.matricule";
         PreparedStatement ps = cnx.prepareStatement(SQL);

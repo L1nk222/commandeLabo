@@ -10,7 +10,6 @@ import entity.Produit;
 import utils.Singleton;
 import views.FenetreMain;
 import java.time.LocalDate;
-import java.io.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -18,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerCommande {
-
     DAOLigneCommande daoLigneCommande;
     DAOCommande daoCommande;
     FenetreMain fenetreMain;
@@ -88,20 +86,27 @@ public class ControllerCommande {
         int quantite=0;
 
 
-            if (fenetreMain.getQuantiteCommande().getText().matches("[0-9]{0,10}")  ) {
+            if (fenetreMain.getQuantiteCommande().getText().matches("[0-9]{1,10}")) {
                  quantite =Integer.parseInt(fenetreMain.getQuantiteCommande().getText());
             }
-            else { quantite = 10;}
+            else { quantite = 100;}
 
             int idCommande = Integer.parseInt(fenetreMain.getIdCommandeAutoLabel().getText());
-            //TODO verifier qu'il n'y est pas deux fois le meme produit
             String produit = (String) fenetreMain.getProduitCommande().getSelectedItem();
             String[] matriculeProd = produit.split(":");
+
             System.out.println(new LigneCommande(idCommande,matriculeProd[0],matriculeProd[1],quantite));
             System.out.println(ligneCommandes);
             LigneCommande ligneCommande = new LigneCommande(idCommande, matriculeProd[0], matriculeProd[1], quantite);
-            if(ligneCommandes.contains(ligneCommande)){
-                //TODO afficher popup et le if est a réparer
+
+            List<String>MatriculeList = new ArrayList<>();
+            for (LigneCommande ligneCommande1:ligneCommandes)
+            {
+            MatriculeList.add(ligneCommande1.getMatriculProd());
+            }
+
+            if(MatriculeList.contains(ligneCommande.getMatriculProd())){
+                //TODO afficher popup
                 System.out.println("element already exist ");
             }
             else {

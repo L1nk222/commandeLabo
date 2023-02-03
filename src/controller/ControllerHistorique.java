@@ -171,6 +171,7 @@ public class ControllerHistorique {
     }
 
     private void BouttonValidationChangementEtatCommande()  {
+        //TODO quand etat est selectionner sur terminer ajouter la commande au stock
         String boxEtat = (String) fenetreMain.getComboBoxEtatCommande().getSelectedItem();
         // produitSelect
         System.out.println("boxEtat :"+boxEtat);
@@ -191,7 +192,7 @@ public class ControllerHistorique {
 
     private void Refresh(){
         try {
-            System.out.println("&& "+ lastSearch);
+            //System.out.println("&& "+ lastSearch);
             /////////////////////////////////
             if (lastSearch.equals("all")){
                 commandeList = daoCommande.findAll(laboratoire);
@@ -199,7 +200,7 @@ public class ControllerHistorique {
                 commandeList = daoCommande.findHistorique(elementSearch,laboratoire);
             } else if (lastSearch.equals("idR")) {
                 int id = Integer.parseInt(elementSearch);
-                commandeList = daoCommande.findAllById(id);
+                commandeList = daoCommande.findAllById(id,laboratoire);
             }
             /////////////////////////////////
         } catch (SQLException e) {

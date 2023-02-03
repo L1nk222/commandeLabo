@@ -16,7 +16,6 @@ public class ControllerHome {
     FenetreMain fenetreMain;
     FenetreConnexion fenetreConnexion;
     Laboratoire laboratoire;
-
     ModelTable modelTable;
 
 

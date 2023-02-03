@@ -17,11 +17,11 @@ public class DAOCommande {
         this.cnx = cnx;
     }
 
-    public Commande findById(int idC) throws SQLException{
+    public Commande findById(int idCommande) throws SQLException{
         Commande commande = null;
         String SQL = "SELECT * FROM commande where dateCommande=?";
         PreparedStatement ps = cnx.prepareStatement(SQL);
-        ps.setInt(1, idC);
+        ps.setInt(1, idCommande);
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
             commande = new Commande();
@@ -54,11 +54,12 @@ public class DAOCommande {
 
         return commande;
     }
-    public List<Commande> findAllById(int id) throws SQLException{
+    public List<Commande> findAllById(int id,Laboratoire laboratoire) throws SQLException{
         List<Commande> commandes = new ArrayList<>();
-        String SQL = "SELECT * FROM commande where idCommande=? ";
+        String SQL = "SELECT * FROM commande where idCommande=? and idLabo=? ";
         PreparedStatement ps = cnx.prepareStatement(SQL);
         ps.setInt(1, id);
+        ps.setInt(2,laboratoire.getIdLabo());
         ResultSet rs = ps.executeQuery();
 
         while (rs.next()){
