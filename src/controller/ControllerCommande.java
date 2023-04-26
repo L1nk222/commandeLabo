@@ -66,7 +66,7 @@ public class ControllerCommande {
 
         try {
             daoCommande.save(new Commande(Integer.parseInt(fenetreMain.getIdCommandeAutoLabel().getText()),""+LocalDate.now(),
-                    fenetreMain.getDescriptionTextAreaCommande().getText(),Integer.parseInt(fenetreMain.getIdLaboratoireLabel().getText())));
+                    fenetreMain.getDescriptionTextAreaCommande().getText(),"En cours",Integer.parseInt(fenetreMain.getIdLaboratoireLabel().getText())));
 
             for (LigneCommande lignecommande:ligneCommandes
                  ) {
