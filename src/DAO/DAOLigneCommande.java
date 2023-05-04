@@ -18,7 +18,7 @@ public class DAOLigneCommande {
 
     public LigneCommande findById(int idCommande) throws SQLException {
         LigneCommande commande = null;
-        String SQL = "SELECT * FROM ligneCommande where idCommande=?";
+        String SQL = "SELECT * FROM lignecommande where idCommande=?";
         PreparedStatement ps = cnx.prepareStatement(SQL);
         ps.setInt(1, idCommande);
         ResultSet rs = ps.executeQuery();
@@ -34,7 +34,7 @@ public class DAOLigneCommande {
     }
     public LigneCommande findByMatricule(String matricule) throws SQLException {
         LigneCommande commande = null;
-        String SQL = "SELECT * FROM ligneCommande where matriculeProd=?";
+        String SQL = "SELECT * FROM lignecommande where matriculeProd=?";
         PreparedStatement ps = cnx.prepareStatement(SQL);
         ps.setString(1, matricule);
         ResultSet rs = ps.executeQuery();
@@ -51,7 +51,7 @@ public class DAOLigneCommande {
     public List<LigneCommande> findByAllId(int idCommande) throws SQLException {
         List<LigneCommande> commandes = new ArrayList<>();
         LigneCommande commande = null;
-        String SQL = "SELECT * FROM ligneCommande  where idCommande=?   ";
+        String SQL = "SELECT * FROM lignecommande  where idCommande=?   ";
         PreparedStatement ps = cnx.prepareStatement(SQL);
         ps.setInt(1, idCommande);
         ResultSet rs = ps.executeQuery();
@@ -68,7 +68,7 @@ public class DAOLigneCommande {
     }
     public List<LigneCommande> findAll(int limit, int offset) throws SQLException{
         List<LigneCommande> commandes = new ArrayList<>();
-        String SQL = "SELECT * FROM ligneCommande LIMIT ? OFFSET ?";
+        String SQL = "SELECT * FROM lignecommande LIMIT ? OFFSET ?";
         PreparedStatement ps = cnx.prepareStatement(SQL);
         ps.setInt(1, offset);
         ps.setInt(1, limit);
@@ -88,7 +88,7 @@ public class DAOLigneCommande {
         return findAll(0,4000);
     }
     public void save(LigneCommande c) throws SQLException{
-        String SQL= "INSERT INTO ligneCommande (idCommande, matriculeProd, quantiteProd) VALUES (?,?,?);";
+        String SQL= "INSERT INTO lignecommande (idCommande, matriculeProd, quantiteProd) VALUES (?,?,?);";
         PreparedStatement ps =cnx.prepareStatement(SQL);
         ps.setInt(1,c.getIdCommande() );
         ps.setString(2,c.getMatriculProd() );
@@ -99,7 +99,7 @@ public class DAOLigneCommande {
     }
 
     public void update(LigneCommande c) throws SQLException {
-        String SQL = "UPDATE ligneCommande SET idCommande=?, matriculeProd=?,quantiteProd=?";
+        String SQL = "UPDATE lignecommande SET idCommande=?, matriculeProd=?,quantiteProd=?";
         PreparedStatement ps = cnx.prepareStatement(SQL);
         ps.setInt(1,c.getIdCommande());
         ps.setString(2,c.getMatriculProd() );
@@ -111,7 +111,7 @@ public class DAOLigneCommande {
 
     public void delete(LigneCommande c) throws SQLException{
         String matriculProd =  c.getMatriculProd();
-        String SQL ="DELETE FROM ligneCommande WHERE matriculeProd =?";
+        String SQL ="DELETE FROM lignecommande WHERE matriculeProd =?";
         PreparedStatement ps = cnx.prepareStatement(SQL);
         ps.setString(1,matriculProd);
         ps.executeQuery();

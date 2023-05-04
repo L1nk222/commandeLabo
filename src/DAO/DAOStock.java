@@ -1,6 +1,7 @@
 package DAO;
 
 import entity.Laboratoire;
+import entity.LigneCommande;
 import entity.Stock;
 
 import java.sql.Connection;
@@ -18,11 +19,11 @@ public class DAOStock {
         this.cnx = cnx;
     }
 
-    public Stock find(int id) throws SQLException {
+    public Stock find(String id) throws SQLException {
         Stock stock = null;
         String SQL = "SELECT * FROM produit where matricule=?";
         PreparedStatement ps = cnx.prepareStatement(SQL);
-        ps.setInt(1, id);
+        ps.setString(1, id);
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
             stock = new Stock();
@@ -102,6 +103,18 @@ public class DAOStock {
 
         }
         return stocks;
+    }
+
+    public void update(Stock stock) throws SQLException {
+        String SQL = "UPDATE stock SET quantiteProd=?,seuilCritique=? where idStock=? and matricule=?";
+        PreparedStatement ps = cnx.prepareStatement(SQL);
+        ps.setInt(1, stock.getQuantiteProd());
+        ps.setInt(2,stock.getSeuilCritique());
+        ps.setInt(3,stock.getIdStock());
+        ps.setString(4,stock.getMatricule() );
+        ps.executeQuery();
+        System.out.println("ajouter :)");
+
     }
 
     }
