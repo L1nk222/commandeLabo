@@ -24,28 +24,27 @@ public class ControllerHome {
     ModelTable modelTable;
 
 
-    public ControllerHome(DAOLaboratoire daol, FenetreMain fenetreMain, FenetreConnexion fenetreConnexion,Laboratoire laboratoire){
-        this.daol=daol;
-        this.fenetreMain=fenetreMain;
-        this.fenetreConnexion=fenetreConnexion;
-        this.laboratoire=laboratoire;
+    public ControllerHome(DAOLaboratoire daol, FenetreMain fenetreMain, FenetreConnexion fenetreConnexion, Laboratoire laboratoire) {
+        this.daol = daol;
+        this.fenetreMain = fenetreMain;
+        this.fenetreConnexion = fenetreConnexion;
+        this.laboratoire = laboratoire;
 
 
     }
-    private void fillData(){
+
+    private void fillData() {
         fenetreMain.getNomLabo().setText(laboratoire.getNom());
-        fenetreMain.getIdStockLabel().setText(""+laboratoire.getIdStock());
+        fenetreMain.getIdStockLabel().setText("" + laboratoire.getIdStock());
         fenetreMain.getEmailLabel().setText(laboratoire.getEmail());
-        fenetreMain.getIdLaboLabel().setText(""+laboratoire.getIdLabo());
+        fenetreMain.getIdLaboLabel().setText("" + laboratoire.getIdLabo());
         fenetreMain.getAdresseLabel().setText(laboratoire.getAdresse());
         fenetreMain.getNumPhoneLabel().setText(laboratoire.getNumTelephone());
         fenetreMain.getVilleLaboLabel().setText(laboratoire.getVille());
     }
 
 
-
-
-    public void init(){
+    public void init() {
         fillData();
         /*
         try {
@@ -64,7 +63,4 @@ public class ControllerHome {
 
 
     }
-    }
-
-
-
+}
