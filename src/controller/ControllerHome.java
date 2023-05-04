@@ -43,8 +43,8 @@ public class ControllerHome {
     }
 
 
-        fenetreMain.setIconImage(bufferedImage);
-    }
+
+
     public void init(){
         fillData();
         /*
@@ -66,7 +66,5 @@ public class ControllerHome {
     }
     }
 
-    private void image() throws IOException {
-        File file = new File("..\\..\\img\\Steins_Gate_Labo.jpg");
-        BufferedImage bufferedImage = ImageIO.read(file);
+
 

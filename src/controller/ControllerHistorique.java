@@ -2,9 +2,11 @@ package controller;
 
 import DAO.DAOCommande;
 import DAO.DAOLigneCommande;
+import DAO.DAOStock;
 import entity.Commande;
 import entity.Laboratoire;
 import entity.LigneCommande;
+import entity.Stock;
 import utils.Singleton;
 import views.FenetreMain;
 
@@ -13,13 +15,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerHistorique {
 
     FenetreMain fenetreMain;
     DAOCommande daoCommande;
+    DAOStock daoStock;
     DAOLigneCommande daoLigneCommande;
     List<Commande> commandeList;
     List<LigneCommande> lesCommandes;
@@ -30,12 +32,14 @@ public class ControllerHistorique {
     int produitSelect;
     Laboratoire laboratoire;
 
+    Stock stock;
 
-    public  ControllerHistorique(FenetreMain fenetreMain, DAOCommande daoCommande, Laboratoire laboratoire){
+    public  ControllerHistorique(FenetreMain fenetreMain, DAOCommande daoCommande, DAOStock daoStock, Laboratoire laboratoire){
         super();
         this.fenetreMain = fenetreMain;
         this.daoCommande = daoCommande;
         this.laboratoire = laboratoire;
+        this.daoStock = daoStock;
         daoLigneC();
         fenetreMain.getRechercheButton().addActionListener(new ActionListener() {
             @Override
@@ -175,12 +179,31 @@ public class ControllerHistorique {
         String boxEtat = (String) fenetreMain.getComboBoxEtatCommande().getSelectedItem();
         // produitSelect
         System.out.println("boxEtat :"+boxEtat);
-        if (boxEtat.equals("Null")){
+            if (boxEtat.equals("Null")){
             boxEtat = null;
         }
+
         try {
             System.out.println("id Produit = "+produitSelect+"  Etat produit = "+boxEtat);
             daoCommande.updateEtat(boxEtat,produitSelect);
+            if (boxEtat.equals("Terminer")){
+                int row =fenetreMain.getTableHistorique().getSelectedRow();
+                produitSelect = (int) fenetreMain.getTableHistorique().getValueAt(row,0);
+                System.out.println(produitSelect);
+                for (LigneCommande ligneCommande: daoLigneCommande.findByAllId(produitSelect)
+                     ) {
+                       // if(daoStock.findAll(ligneCommande.getMatriculProd())== new Stock()){
+                         //   save}
+                    System.out.println("id commande"+(6));
+                    System.out.println("matricule"+ligneCommande.getMatriculProd());
+                        daoStock.update(new Stock( ligneCommande.getIdCommande(),ligneCommande.getMatriculProd(),
+                                ligneCommande.getQuantiteProd(),0));
+                }
+
+
+
+            }
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
