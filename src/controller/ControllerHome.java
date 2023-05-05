@@ -2,6 +2,7 @@ package controller;
 
 import DAO.DAOLaboratoire;
 import entity.Laboratoire;
+import entity.User;
 import views.FenetreCommande;
 import views.FenetreConnexion;
 import views.FenetreMain;
@@ -22,13 +23,14 @@ public class ControllerHome {
     FenetreConnexion fenetreConnexion;
     Laboratoire laboratoire;
     ModelTable modelTable;
+    User user;
 
-
-    public ControllerHome(DAOLaboratoire daol, FenetreMain fenetreMain, FenetreConnexion fenetreConnexion, Laboratoire laboratoire) {
+    public ControllerHome(DAOLaboratoire daol, FenetreMain fenetreMain, FenetreConnexion fenetreConnexion, Laboratoire laboratoire, User user) {
         this.daol = daol;
         this.fenetreMain = fenetreMain;
         this.fenetreConnexion = fenetreConnexion;
         this.laboratoire = laboratoire;
+        this.user = user;
 
 
     }
@@ -41,6 +43,7 @@ public class ControllerHome {
         fenetreMain.getAdresseLabel().setText(laboratoire.getAdresse());
         fenetreMain.getNumPhoneLabel().setText(laboratoire.getNumTelephone());
         fenetreMain.getVilleLaboLabel().setText(laboratoire.getVille());
+        fenetreMain.getUserName().setText(user.getUsername());
     }
 
 

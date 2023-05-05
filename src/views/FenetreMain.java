@@ -58,6 +58,7 @@ public class FenetreMain extends JFrame{
     private JComboBox comboBoxEtatCommande;
     private JButton buttonEtatCommande;
     private JButton refrecheButton;
+    private JLabel UserName;
 
     /////////////////////////////////////////////////////////////////////////////
     public  FenetreMain(){
@@ -479,4 +480,13 @@ public class FenetreMain extends JFrame{
     public void setRefrecheButton(JButton refrecheButton) {
         this.refrecheButton = refrecheButton;
     }
+    public JLabel getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(JLabel userName) {
+        UserName = userName;
+    }
+
 }
+
