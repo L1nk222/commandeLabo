@@ -311,7 +311,7 @@
                 </constraints>
                 <properties>
                   <model>
-                    <item value="Date"/>
+                    <item value="Annee"/>
                     <item value="Id"/>
                   </model>
                 </properties>

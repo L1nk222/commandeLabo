@@ -141,7 +141,7 @@ public class ControllerHistorique {
     private void recherche(){
         String box = (String) fenetreMain.getComboBox1().getSelectedItem();
         String r = fenetreMain.getRechercheHistorique().getText();
-        if (box.equals("Date")){
+        if (box.equals("Annee")){
             dateR(r);
         } else if (box.equals("Id")) {
             idR(r);
@@ -199,9 +199,6 @@ public class ControllerHistorique {
                         daoStock.update(new Stock( ligneCommande.getIdCommande(),ligneCommande.getMatriculProd(),
                                 ligneCommande.getQuantiteProd(),0));
                 }
-
-
-
             }
 
         } catch (SQLException e) {
@@ -209,8 +206,6 @@ public class ControllerHistorique {
         }
         System.out.println("Commande effectuer");
         Refresh();
-
-
     }
 
     private void Refresh(){
@@ -220,10 +215,20 @@ public class ControllerHistorique {
             if (lastSearch.equals("all")){
                 commandeList = daoCommande.findAll(laboratoire);
             } else if (lastSearch.equals("DateR")) {
-                commandeList = daoCommande.findHistorique(elementSearch,laboratoire);
+                if (elementSearch.equals("") ||elementSearch.equals(" ") ||elementSearch.equals(null) ){
+                    commandeList = daoCommande.findAll(laboratoire);
+                }else {
+                    commandeList = daoCommande.findHistorique(elementSearch,laboratoire);
+                }
+
             } else if (lastSearch.equals("idR")) {
-                int id = Integer.parseInt(elementSearch);
-                commandeList = daoCommande.findAllById(id,laboratoire);
+                if (elementSearch.equals("") ||elementSearch.equals(" ") ||elementSearch.equals(null) ){
+                    commandeList = daoCommande.findAll(laboratoire);
+                }else {
+                    int id = Integer.parseInt(elementSearch);
+                    commandeList = daoCommande.findAllById(id,laboratoire);
+                }
+
             }
             /////////////////////////////////
         } catch (SQLException e) {
@@ -232,5 +237,4 @@ public class ControllerHistorique {
         mDTM = new ModelTableHistorique(commandeList);
         fenetreMain.getTableHistorique().setModel(mDTM);
     }
-
 }
