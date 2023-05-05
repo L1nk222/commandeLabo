@@ -19,17 +19,18 @@ public class DAOStock {
         this.cnx = cnx;
     }
 
-    public Stock find(String id) throws SQLException {
+    public Stock find(String matricule, int id) throws SQLException {
         Stock stock = null;
-        String SQL = "SELECT * FROM produit where matricule=?";
+        String SQL = "SELECT * FROM stock where matricule=? and idStock=?";
         PreparedStatement ps = cnx.prepareStatement(SQL);
-        ps.setString(1, id);
+        ps.setString(1, matricule);
+        ps.setInt(2,id);
         ResultSet rs = ps.executeQuery();
         if (rs.next()) {
             stock = new Stock();
             stock.setIdStock(rs.getInt("idStock"));
             stock.setMatricule(rs.getString("matricule"));
-            stock.setNomProd(rs.getString("libelle"));
+
             stock.setQuantiteProd(rs.getInt("quantiteProd"));
             stock.setSeuilCritique(rs.getInt("seuilCritique"));
 
@@ -113,9 +114,35 @@ public class DAOStock {
         ps.setInt(3,stock.getIdStock());
         ps.setString(4,stock.getMatricule() );
         ps.executeQuery();
-        System.out.println("ajouter :)");
+        //System.out.println("ajouter :)");
 
     }
+
+    public void updateQ(Stock stock,int quantiteprod) throws SQLException {
+        String SQL = "UPDATE stock SET quantiteProd=?+? where idStock=? and matricule=?";
+        PreparedStatement ps = cnx.prepareStatement(SQL);
+        ps.setInt(1, stock.getQuantiteProd());
+        ps.setInt(2,quantiteprod);
+        ps.setInt(3,stock.getIdStock());
+        ps.setString(4,stock.getMatricule() );
+        ps.executeQuery();
+        //System.out.println("ajouter :)");
+
+    }
+    public void save(Stock stock) throws SQLException {
+        String SQL = "INSERT into stock(idStock,matricule,quantiteProd,seuilCritique) VALUES(?,?,?,?)";
+        PreparedStatement ps = cnx.prepareStatement(SQL);
+        ps.setInt(1,stock.getIdStock());
+        ps.setString(2,stock.getMatricule() );
+        ps.setInt(3, stock.getQuantiteProd());
+        ps.setInt(4,stock.getSeuilCritique());
+
+        ps.executeQuery();
+        //System.out.println("ajouter :)");
+
+    }
+
+
 
     }
 

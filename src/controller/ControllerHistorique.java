@@ -10,6 +10,7 @@ import entity.Stock;
 import utils.Singleton;
 import views.FenetreMain;
 
+import javax.lang.model.type.NullType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -57,6 +58,7 @@ public class ControllerHistorique {
             @Override
             public void actionPerformed(ActionEvent e) {
                 BouttonValidationChangementEtatCommande();
+                SelectTable();
             }
         });
         fenetreMain.getRefrecheButton().addActionListener(new ActionListener() {
@@ -128,14 +130,25 @@ public class ControllerHistorique {
     private void selectBoxEtat(String EtatCommande){
         if (EtatCommande.equals("En cours") ) {
             fenetreMain.getComboBoxEtatCommande().setSelectedIndex(0);
+            fenetreMain.getComboBoxEtatCommande().setEnabled(true);
+            fenetreMain.getButtonEtatCommande().setEnabled(true);
+
         } else if (EtatCommande.equals("Terminer")) {
             fenetreMain.getComboBoxEtatCommande().setSelectedIndex(1);
+            fenetreMain.getComboBoxEtatCommande().setEnabled(false);
+            fenetreMain.getButtonEtatCommande().setEnabled(false);
         } else if (EtatCommande.equals("Abandonner")) {
             fenetreMain.getComboBoxEtatCommande().setSelectedIndex(2);
+            fenetreMain.getComboBoxEtatCommande().setEnabled(false);
+            fenetreMain.getButtonEtatCommande().setEnabled(false);
         } else if (EtatCommande.equals("En pause")) {
             fenetreMain.getComboBoxEtatCommande().setSelectedIndex(3);
+            fenetreMain.getComboBoxEtatCommande().setEnabled(true);
+            fenetreMain.getButtonEtatCommande().setEnabled(true);
         }else{
             fenetreMain.getComboBoxEtatCommande().setSelectedIndex(4);
+            fenetreMain.getComboBoxEtatCommande().setEnabled(true);
+            fenetreMain.getButtonEtatCommande().setEnabled(true);
         }
     }
     private void recherche(){
@@ -187,28 +200,37 @@ public class ControllerHistorique {
             System.out.println("id Produit = "+produitSelect+"  Etat produit = "+boxEtat);
             daoCommande.updateEtat(boxEtat,produitSelect);
             if (boxEtat.equals("Terminer")){
+
+
                 int row =fenetreMain.getTableHistorique().getSelectedRow();
                 produitSelect = (int) fenetreMain.getTableHistorique().getValueAt(row,0);
                 System.out.println(produitSelect);
+
                 for (LigneCommande ligneCommande: daoLigneCommande.findByAllId(produitSelect)
                      ) {
-                       // if(daoStock.findAll(ligneCommande.getMatriculProd())== new Stock()){
-                         //   save}
-                    System.out.println("id commande"+(6));
-                    System.out.println("matricule"+ligneCommande.getMatriculProd());
-                        daoStock.update(new Stock( ligneCommande.getIdCommande(),ligneCommande.getMatriculProd(),
-                                ligneCommande.getQuantiteProd(),0));
+                    if (daoStock.find(ligneCommande.getMatriculProd(),laboratoire.getIdStock())==null){
+                        daoStock.save(new Stock(laboratoire.getIdStock(),ligneCommande.getMatriculProd(),ligneCommande.getQuantiteProd(),10));
+                    }else
+                    {
+                        System.out.println(daoStock.find(ligneCommande.getMatriculProd(),laboratoire.getIdStock()).getMatricule());
+                        daoStock.updateQ(new Stock(laboratoire.getIdStock(),ligneCommande.getMatriculProd(),ligneCommande.getQuantiteProd(),10),daoStock.find(ligneCommande.getMatriculProd(),laboratoire.getIdStock()).getQuantiteProd());
+                    }
+
                 }
 
-
-
             }
+
+
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
         System.out.println("Commande effectuer");
         Refresh();
+
+
 
 
     }
