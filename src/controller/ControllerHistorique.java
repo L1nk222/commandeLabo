@@ -57,8 +57,12 @@ public class ControllerHistorique {
         fenetreMain.getButtonEtatCommande().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int row =fenetreMain.getTableHistorique().getSelectedRow();
                 BouttonValidationChangementEtatCommande();
-                SelectTable();
+                //SelectTable();
+                //erreur car ca deselectionnr une fois le bouton appuyer
+                String etatProd = (String) fenetreMain.getTableHistorique().getValueAt(row,3);
+                selectBoxEtat(etatProd);
             }
         });
         fenetreMain.getRefrecheButton().addActionListener(new ActionListener() {
