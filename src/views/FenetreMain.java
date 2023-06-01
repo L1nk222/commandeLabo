@@ -59,6 +59,9 @@ public class FenetreMain extends JFrame{
     private JButton buttonEtatCommande;
     private JButton refrecheButton;
     private JLabel UserName;
+    private JList ListeAlerte;
+    private JLabel AlerteLabel;
+    private JButton btnRefreshListAlert;
 
     /////////////////////////////////////////////////////////////////////////////
     public  FenetreMain(){
@@ -480,6 +483,23 @@ public class FenetreMain extends JFrame{
     public void setRefrecheButton(JButton refrecheButton) {
         this.refrecheButton = refrecheButton;
     }
+
+    public JList getListeAlerte() {
+        return ListeAlerte;
+    }
+
+    public JButton getBtnRefreshListAlert() {
+        return btnRefreshListAlert;
+    }
+
+    public void setBtnRefreshListAlert(JButton btnRefreshListAlert) {
+        this.btnRefreshListAlert = btnRefreshListAlert;
+    }
+
+    public void setListeAlerte(JList listeAlerte) {
+        ListeAlerte = listeAlerte;
+    }
+
     public JLabel getUserName() {
         return UserName;
     }

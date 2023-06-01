@@ -142,6 +142,27 @@ public class DAOStock {
 
     }
 
+    public List<Stock> findStockByCritique(Laboratoire laboratoire) throws SQLException{
+        List<Stock> stocks = new ArrayList<>();
+        String SQL = "SELECT * FROM stock,laboratoire,produit where nom= ? AND stock.idStock=laboratoire.idStock AND " +
+                "stock.matricule=produit.matricule AND stock.quantiteProd <= stock.seuilCritique;";
+
+        PreparedStatement ps = cnx.prepareStatement(SQL);
+        ps.setString(1, laboratoire.getNom());
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Stock stock = new Stock();
+            stock.setIdStock(rs.getInt("idStock"));
+            stock.setMatricule(rs.getString("matricule"));
+            stock.setNomProd(rs.getString("libelle"));
+            stock.setQuantiteProd(rs.getInt("quantiteProd"));
+            stock.setSeuilCritique(rs.getInt("seuilCritique"));
+            stocks.add(stock);
+
+        }
+        return stocks;
+    }
+
 
 
     }

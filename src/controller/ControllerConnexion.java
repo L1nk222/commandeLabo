@@ -88,7 +88,7 @@ public class ControllerConnexion {
                 DAOLigneCommande daolc = new DAOLigneCommande(Singleton.getInstance().cnx);
                 DAOCommande daoc = new DAOCommande(Singleton.getInstance().cnx);
                 FenetreMain f2 = new FenetreMain();
-                new ControllerHome(daol,f2,fenetreCnx,daol.findByName(""+fenetreCnx.getComboLabo().getSelectedItem()),user).init();
+                new ControllerHome(daol,daos,f2,fenetreCnx,daol.findByName(""+fenetreCnx.getComboLabo().getSelectedItem()),user).init();
                 new ControllerStock(daos,daop,f2,daol.findByName(""+fenetreCnx.getComboLabo().getSelectedItem())).init();
                 new ControllerCommande(daolc,daoc,f2,daol.findByName(""+fenetreCnx.getComboLabo().getSelectedItem())).init();
                 new ControllerHistorique(f2,daoc,daos,daol.findByName(""+fenetreCnx.getComboLabo().getSelectedItem())).init();
