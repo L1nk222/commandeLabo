@@ -1,14 +1,14 @@
-import DAO.DAOCommande;
-import DAO.DAOConnexion;
-import DAO.DAOLaboratoire;
-import DAO.DAOProduit;
+import DAO.*;
 import controller.ControllerConnexion;
+import controller.ControllerStock;
+import controller.ControllerVideStock;
 import entity.Commande;
 import entity.Laboratoire;
 import entity.Produit;
 import utils.Singleton;
 import views.FenetreConnexion;
 import views.FenetreMain;
+import views.FenetreVideStock;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -94,6 +94,29 @@ public class Main {
         }
 
     }
+    public static void MainTest2(){
+        DAOStock daos;
+        DAOProduit daop;
+        DAOLaboratoire daol;
+        try{
+            //daol = new DAOLaboratoire(Singleton.getInstance().cnx);
+            FenetreVideStock f2 = new FenetreVideStock();
+            //FenetreConnexion f=new FenetreConnexion();
+             daos = new DAOStock(Singleton.getInstance().cnx);
+             daop = new DAOProduit(Singleton.getInstance().cnx);
+             daol = new DAOLaboratoire(Singleton.getInstance().cnx);
+
+            f2.setVisible(true);
+            //System.out.println(daol.findByName("Winwood"));
+            System.out.println("ça doit marcher");
+           new ControllerVideStock(daos,daop,f2,daol.findByName("Winwood")).init(); //f2.getComboLabo().getSelectedItem())).init()
+            System.out.println("ça a marcher ?");
+        }catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
     public static void main(String[] args)    {
         System.out.println("Hello world!");
         //TestFindLabo();
@@ -101,7 +124,7 @@ public class Main {
         //TestFindAllProduit();
         //TestSaveCommande();
         //TestFindAllCommande();
-        MainTest();
+        MainTest2();
         //aled();
     }
 }
