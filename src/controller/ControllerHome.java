@@ -5,7 +5,7 @@ import DAO.DAOStock;
 import entity.Laboratoire;
 import entity.Stock;
 import entity.User;
-import views.FenetreCommande;
+
 import views.FenetreConnexion;
 import views.FenetreMain;
 

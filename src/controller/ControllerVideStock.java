@@ -103,6 +103,10 @@ public class ControllerVideStock {
             int quantite=0;
             if (fenetreV.getTextQuantiter().getText().matches("[0-9]{1,10}")) {
                 quantite =Integer.parseInt(fenetreV.getTextQuantiter().getText());
+                if(daoStock.find(matriculeProd[0],laboratoire.getIdStock()).getQuantiteProd()-quantite<0){
+                    quantite=0;
+                }
+
             }
 
             //Utiliser : "updateQ" du DAO Stock

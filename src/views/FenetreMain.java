@@ -68,7 +68,7 @@ public class FenetreMain extends JFrame{
         tabbedPane1.setSelectedComponent(Home);
         setContentPane(tabbedPane1);
         setSize(700,600);
-        setExtendedState(FenetreLab.MAXIMIZED_BOTH);
+        setExtendedState(FenetreMain.MAXIMIZED_BOTH);
 
     }
     public void home(){
