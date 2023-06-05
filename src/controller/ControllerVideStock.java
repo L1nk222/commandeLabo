@@ -21,17 +21,17 @@ public class ControllerVideStock {
     DAOStock daoStock;
     DAOProduit daoProduit;
     List<Stock> stocks;
-    FenetreVideStock fenetre;
+    FenetreVideStock fenetreV;
     ModelTableStock modelTable;
     Laboratoire laboratoire;
 
-    public ControllerVideStock(DAOStock daoStock, DAOProduit daoProduit, FenetreVideStock fenetre, Laboratoire laboratoire) {
+    public ControllerVideStock(DAOStock daoStock, DAOProduit daoProduit, FenetreVideStock fenetreV, Laboratoire laboratoire) {
         this.daoStock = daoStock;
-        this.fenetre = fenetre;
+        this.fenetreV = fenetreV;
         this.laboratoire = laboratoire;
         this.daoProduit = daoProduit;
 
-        fenetre.getValideButton().addActionListener(new ActionListener() {
+        fenetreV.getValideButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -39,7 +39,7 @@ public class ControllerVideStock {
             }
         });
 
-        fenetre.getTableStock().addMouseListener(new MouseListener() {
+        fenetreV.getTableStock().addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 doSelect();
@@ -74,16 +74,16 @@ public class ControllerVideStock {
     private void doSelect(){
 
         try{
-            int row =fenetre.getTableStock().getSelectedRow();
-            String produitSelect = (String) fenetre.getTableStock().getValueAt(row,1);
+            int row =fenetreV.getTableStock().getSelectedRow();
+            String produitSelect = (String) fenetreV.getTableStock().getValueAt(row,1);
             Produit produit = daoProduit.find(produitSelect);
-            fenetre.getDescriptionTextPane().setSize(100,100);
-            fenetre.getDescriptionTextPane().setMaximumSize(new Dimension(100,100));
-            fenetre.getLibelle().setText("Libelle:"+produit.getNom());
-            fenetre.getMatriculeLabel().setText("Matricule:"+ produit.getMatricule());
-            fenetre.getDescriptionTextPane().setText("Description:"+produit.getDescription());
-            fenetre.getPoidsLabel().setText("Poids:"+produit.getPoids());
-            fenetre.getIdFournisseurLabel().setText("idFournisseur:"+produit.getIdFournisseur());
+            fenetreV.getDescriptionTextPane().setSize(100,100);
+            fenetreV.getDescriptionTextPane().setMaximumSize(new Dimension(100,100));
+            fenetreV.getLibelle().setText("Libelle:"+produit.getNom());
+            fenetreV.getMatriculeLabel().setText("Matricule:"+ produit.getMatricule());
+            fenetreV.getDescriptionTextPane().setText("Description:"+produit.getDescription());
+            fenetreV.getPoidsLabel().setText("Poids:"+produit.getPoids());
+            fenetreV.getIdFournisseurLabel().setText("idFournisseur:"+produit.getIdFournisseur());
 
         }
         catch (SQLException e) {
@@ -94,11 +94,28 @@ public class ControllerVideStock {
 
     }
 
-    private void doValidation() {
-        //Récupéré le nom du produit dans la combo box
-        //Récupéré la quantité séléctionné  : fenetre.getTextQuantiter().getText()
-        //Utiliser : "updateQ" du DAO Stock
-        //Faire un FinAll pour le tableau de stock
+    private void doValidation()  {
+        try {
+            //Récupéré le nom du produit dans la combo box
+            String produitSelect = (String) fenetreV.getComboBoxProduit().getSelectedItem();
+            String[] matriculeProd = produitSelect.split(":");
+            //Récupéré la quantité séléctionné  : fenetre.getTextQuantiter().getText()
+            int quantite=0;
+            if (fenetreV.getTextQuantiter().getText().matches("[0-9]{1,10}")) {
+                quantite =Integer.parseInt(fenetreV.getTextQuantiter().getText());
+            }
+
+            //Utiliser : "updateQ" du DAO Stock
+            daoStock.updateQ(daoStock.find(matriculeProd[0],laboratoire.getIdStock()),-quantite);
+            //Faire un FindAll pour le tableau de stock
+            initTableStock();
+
+        }  catch (SQLException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+
+    }
+
     }
 
     public void initTableStock(){
@@ -106,7 +123,7 @@ public class ControllerVideStock {
 
             stocks = daoStock.findStockBySearch(laboratoire);
             modelTable = new ModelTableStock(stocks);
-            fenetre.getTableStock().setModel(modelTable);
+            fenetreV.getTableStock().setModel(modelTable);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -116,25 +133,22 @@ public class ControllerVideStock {
 
     public void init() {
         try {
-            stocks = daoStock.findAll();
-            /*
+            stocks = daoStock.findStockBySearch(laboratoire);
             for (Stock stock: stocks
                  ) {
-                System.out.println(stock.getMatricule());
-            }*/
+
+                fenetreV.getComboBoxProduit().addItem(stock.getMatricule()+":"+stock.getNomProd());
+            }
             initTableStock();
-            System.out.println("fin ?");
-            fenetre.setVisible(true);
-            System.out.println("finte");
 
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-            fenetre.setVisible(true);
+
         }
-
-
-
+        System.out.println("avant setVisible");
+        fenetreV.setVisible(true);
+        System.out.println("après setVisible");
 
     }}
 

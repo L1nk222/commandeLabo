@@ -7,6 +7,7 @@ import views.FenetreMain;
 import views.FenetreConnexion;
 
 import entity.User;
+import views.FenetreVideStock;
 
 
 import javax.swing.*;
@@ -25,14 +26,14 @@ public class ControllerConnexion {
     DAOConnexion daoc;
     DAOLaboratoire daol;
     FenetreMain fenetreMain;
+    FenetreVideStock fenetreV;
 
-    public ControllerConnexion(FenetreConnexion fenetreCnx, DAOConnexion daoc, DAOLaboratoire daol, FenetreMain fenetreMain) {
+    public ControllerConnexion(FenetreConnexion fenetreCnx, DAOConnexion daoc, DAOLaboratoire daol, FenetreMain fenetreMain, FenetreVideStock fenetreV) {
         this.fenetreCnx = fenetreCnx;
         this.daoc = daoc;
         this.daol = daol;
-
         this.fenetreMain = fenetreMain;
-
+        this.fenetreV = fenetreV;
 
         fenetreCnx.getValiderButton().addActionListener(new ActionListener() {
             @Override
@@ -82,17 +83,25 @@ public class ControllerConnexion {
             if(user.getPassword().equals(password)){
                 //System.out.println("c passe");
                 fenetreCnx.setVisible(false);
-                daol = new DAOLaboratoire(Singleton.getInstance().cnx);
-                DAOStock daos = new DAOStock(Singleton.getInstance().cnx);
-                DAOProduit daop = new DAOProduit(Singleton.getInstance().cnx);
-                DAOLigneCommande daolc = new DAOLigneCommande(Singleton.getInstance().cnx);
-                DAOCommande daoc = new DAOCommande(Singleton.getInstance().cnx);
-                FenetreMain f2 = new FenetreMain();
-                new ControllerHome(daol,daos,f2,fenetreCnx,daol.findByName(""+fenetreCnx.getComboLabo().getSelectedItem()),user).init();
-                new ControllerStock(daos,daop,f2,daol.findByName(""+fenetreCnx.getComboLabo().getSelectedItem())).init();
-                new ControllerCommande(daolc,daoc,f2,daol.findByName(""+fenetreCnx.getComboLabo().getSelectedItem())).init();
-                new ControllerHistorique(f2,daoc,daos,daol.findByName(""+fenetreCnx.getComboLabo().getSelectedItem())).init();
+                System.out.println(user.getAdmin());
+                System.out.println(user.getUsername());
 
+                    daol = new DAOLaboratoire(Singleton.getInstance().cnx);
+                    DAOStock daos = new DAOStock(Singleton.getInstance().cnx);
+                    DAOProduit daop = new DAOProduit(Singleton.getInstance().cnx);
+                    DAOLigneCommande daolc = new DAOLigneCommande(Singleton.getInstance().cnx);
+                    DAOCommande daoc = new DAOCommande(Singleton.getInstance().cnx);
+                if(user.getAdmin() == 1) {
+                    FenetreMain f2 = new FenetreMain();
+                    new ControllerHome(daol, daos, f2, fenetreCnx, daol.findByName("" + fenetreCnx.getComboLabo().getSelectedItem()), user).init();
+                    new ControllerStock(daos, daop, f2, daol.findByName("" + fenetreCnx.getComboLabo().getSelectedItem())).init();
+                    new ControllerCommande(daolc, daoc, f2, daol.findByName("" + fenetreCnx.getComboLabo().getSelectedItem())).init();
+                    new ControllerHistorique(f2, daoc, daos, daol.findByName("" + fenetreCnx.getComboLabo().getSelectedItem())).init();
+                }
+                else {
+                    FenetreVideStock f3 = new FenetreVideStock();
+                    new ControllerVideStock(daos,daop,f3,daol.findByName("" + fenetreCnx.getComboLabo().getSelectedItem())).init();
+                }
                 //fenetreMain.setVisible(true);
             }
             //System.out.println(password);

@@ -86,13 +86,13 @@ public class FenetreVideStock extends JFrame{
         this.descriptionTextPane = descriptionTextPane;
     }
 
-    public void setVisible(boolean b) {
-    }
+
     public FenetreVideStock(){
         setContentPane(panel1);
         setSize(400,340);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setResizable(false);
-        setVisible(true);
+        //setVisible(true);
     }
     public static void main(String[] arg){
         FenetreVideStock myConnexion= new FenetreVideStock();

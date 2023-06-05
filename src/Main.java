@@ -87,7 +87,8 @@ public class Main {
 
             FenetreConnexion f=new FenetreConnexion();
             FenetreMain f2 = new FenetreMain();
-            new ControllerConnexion(f,daoc,daol,f2).init();
+            FenetreVideStock f3 = new FenetreVideStock();
+            new ControllerConnexion(f,daoc,daol,f2,f3).init();
         }catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -107,7 +108,7 @@ public class Main {
              daol = new DAOLaboratoire(Singleton.getInstance().cnx);
 
             f2.setVisible(true);
-            //System.out.println(daol.findByName("Winwood"));
+            System.out.println(daol.findByName("Winwood").getVille());
             System.out.println("ça doit marcher");
            new ControllerVideStock(daos,daop,f2,daol.findByName("Winwood")).init(); //f2.getComboLabo().getSelectedItem())).init()
             System.out.println("ça a marcher ?");
@@ -117,6 +118,17 @@ public class Main {
         }
 
     }
+
+    public static void MainTest3(){
+
+        //FenetreVideStock fenetreVideStock = new FenetreVideStock();
+        //fenetreVideStock.setVisible(true);
+
+        FenetreMain fenetreMain = new FenetreMain();
+        fenetreMain.setVisible(true);
+    }
+
+
     public static void main(String[] args)    {
         System.out.println("Hello world!");
         //TestFindLabo();
@@ -124,7 +136,7 @@ public class Main {
         //TestFindAllProduit();
         //TestSaveCommande();
         //TestFindAllCommande();
-        MainTest2();
+        MainTest();
         //aled();
     }
 }

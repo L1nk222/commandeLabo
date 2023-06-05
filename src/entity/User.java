@@ -5,8 +5,8 @@ public class User {
 
     int id;
     String username;
-
     String password;
+    int admin;
 
     public String getUsername() {
         return username;
@@ -22,6 +22,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public int getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(int admin) {
+        this.admin = admin;
     }
 
     @Override
@@ -40,6 +47,13 @@ public class User {
         this.id = id;
         this.username = username;
         this.password = password;
+    }
+
+    public User(int id, String username, String password, int admin) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.admin = admin;
     }
 
     public int getId() {
