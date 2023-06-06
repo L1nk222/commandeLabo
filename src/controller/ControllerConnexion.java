@@ -83,7 +83,7 @@ public class ControllerConnexion {
             if(user.getPassword().equals(password)){
                 //System.out.println("c passe");
                 fenetreCnx.setVisible(false);
-                System.out.println(user.getAdmin());
+                System.out.println(user.getRole());
                 System.out.println(user.getUsername());
 
                     daol = new DAOLaboratoire(Singleton.getInstance().cnx);
@@ -91,7 +91,7 @@ public class ControllerConnexion {
                     DAOProduit daop = new DAOProduit(Singleton.getInstance().cnx);
                     DAOLigneCommande daolc = new DAOLigneCommande(Singleton.getInstance().cnx);
                     DAOCommande daoc = new DAOCommande(Singleton.getInstance().cnx);
-                if(user.getAdmin() == 1) {
+                if(user.getRole() == 1) {
                     FenetreMain f2 = new FenetreMain();
                     new ControllerHome(daol, daos, f2, fenetreCnx, daol.findByName("" + fenetreCnx.getComboLabo().getSelectedItem()), user).init();
                     new ControllerStock(daos, daop, f2, daol.findByName("" + fenetreCnx.getComboLabo().getSelectedItem())).init();

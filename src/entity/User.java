@@ -6,7 +6,7 @@ public class User {
     int id;
     String username;
     String password;
-    int admin;
+    int role;
 
     public String getUsername() {
         return username;
@@ -23,12 +23,12 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public int getAdmin() {
-        return admin;
+    public int getRole() {
+        return role;
     }
 
-    public void setAdmin(int admin) {
-        this.admin = admin;
+    public void setRole(int role) {
+        this.role = role;
     }
 
     @Override
@@ -49,11 +49,11 @@ public class User {
         this.password = password;
     }
 
-    public User(int id, String username, String password, int admin) {
+    public User(int id, String username, String password, int role) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.admin = admin;
+        this.role = role;
     }
 
     public int getId() {

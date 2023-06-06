@@ -26,7 +26,7 @@ public class DAOConnexion {
             user.setId((rs.getInt("id")));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
-            user.setAdmin((rs.getInt("admin")));
+            user.setRole((rs.getInt("role")));
 
         }
         return user;
